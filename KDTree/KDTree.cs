@@ -11,14 +11,14 @@ namespace KDTree
 
         private readonly TKey minvalue;
         private readonly TKey maxvalue;
-        private readonly TKey[][] internalArray;
+        public readonly TKey[][] InternalArray;
         private readonly Func<TKey[], TKey[], TKey> Metric;
 
         public KDTree(int dimensions, TKey minValue, TKey maxValue, Func<TKey[], TKey[], TKey> metric, TKey[][] points)
         {
             this.dimensions = dimensions;
             var elementCount = (int)Math.Pow(2, (int)(Math.Log(points.Length) / Math.Log(2)) + 1);
-            this.internalArray = Enumerable.Repeat(default(TKey[]), elementCount).ToArray();
+            this.InternalArray = Enumerable.Repeat(default(TKey[]), elementCount).ToArray();
             this.minvalue = minValue;
             this.maxvalue = maxValue;
             this.Metric = metric;
@@ -54,7 +54,7 @@ namespace KDTree
 
             // The point with the median value all the current dimension now becomes the value of the current tree node
             // The previous node becomes the parents of the current node.
-            this.internalArray[index] = medianPoint;
+            this.InternalArray[index] = medianPoint;
 
 
 
@@ -80,7 +80,7 @@ namespace KDTree
             {
                 if (leftPoints.Length == 1)
                 {
-                    this.internalArray[LeftChildIndex(index)] = leftPoints[0];
+                    this.InternalArray[LeftChildIndex(index)] = leftPoints[0];
                 }
             }
             else
@@ -93,7 +93,7 @@ namespace KDTree
             {
                 if (rightPoints.Length == 1)
                 {
-                    this.internalArray[RightChildIndex(index)] = rightPoints[0];
+                    this.InternalArray[RightChildIndex(index)] = rightPoints[0];
                 }
             }
             else
@@ -163,7 +163,7 @@ namespace KDTree
             BoundedPriorityList<TKey[], TKey> nearestNeighbours,
             TKey maxSearchRadiusSquared)
         {
-            if (this.internalArray.Length <= nodeIndex || nodeIndex < 0 || this.internalArray[nodeIndex] == null)
+            if (this.InternalArray.Length <= nodeIndex || nodeIndex < 0 || this.InternalArray[nodeIndex] == null)
             {
                 return;
             }
@@ -174,13 +174,13 @@ namespace KDTree
             // Split our hyper-rect into 2 sub rects along the current 
             // node's point on the current dimension
             var leftRect = rect.Clone();
-            leftRect.MaxPoint[dimension] = this.internalArray[nodeIndex][dimension];
+            leftRect.MaxPoint[dimension] = this.InternalArray[nodeIndex][dimension];
 
             var rightRect = rect.Clone();
-            rightRect.MinPoint[dimension] = this.internalArray[nodeIndex][dimension];
+            rightRect.MinPoint[dimension] = this.InternalArray[nodeIndex][dimension];
 
             // Which side does the target reside in?
-            int compare = target[dimension].CompareTo(this.internalArray[nodeIndex][dimension]);
+            int compare = target[dimension].CompareTo(this.InternalArray[nodeIndex][dimension]);
 
             var nearerRect = compare <= 0 ? leftRect : rightRect;
             var furtherRect = compare <= 0 ? rightRect : leftRect;
@@ -234,10 +234,10 @@ namespace KDTree
             }
 
             // Try to add the current node to our nearest neighbours list
-            distanceSquaredToTarget = this.Metric(this.internalArray[nodeIndex], target);
+            distanceSquaredToTarget = this.Metric(this.InternalArray[nodeIndex], target);
 
             if (distanceSquaredToTarget.CompareTo(maxSearchRadiusSquared) <= 0)
-                nearestNeighbours.Add(this.internalArray[nodeIndex], distanceSquaredToTarget);
+                nearestNeighbours.Add(this.InternalArray[nodeIndex], distanceSquaredToTarget);
         }
 
         /*

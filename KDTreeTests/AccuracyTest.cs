@@ -2,11 +2,12 @@
 {
 
     using NUnit.Framework;
+    using static KDTree.BinaryTreeUtilities;
 
     [TestFixture]
     public class AccuracyTest
     {
-        /*
+
         /// <summary>
         /// Should build the tree displayed in the article:
         /// https://en.wikipedia.org/wiki/K-d_tree
@@ -35,20 +36,15 @@
                              };
 
 
-            var tree = new KDTree.KDTree<double>(2, double.MinValue, double.MaxValue, Utilities.L2Norm_Squared_Double);
-            foreach (var point in points)
-            {
-                tree.Add(point);
-            }
-            tree.Balance();
+            var tree = new KDTree.KDTree<double>(2, double.MinValue, double.MaxValue, Utilities.L2Norm_Squared_Double, points);
 
-            Assert.That(tree.Root.Point, Is.EqualTo(points[0]));
-            Assert.That(tree.Root.LeftChild.Point, Is.EqualTo(points[1]));
-            Assert.That(tree.Root.LeftChild.RightChild.Point, Is.EqualTo(points[2]));
-            Assert.That(tree.Root.LeftChild.RightChild.Point, Is.EqualTo(points[3]));
-            Assert.That(tree.Root.RightChild.Point, Is.EqualTo(points[4]));
-            Assert.That(tree.Root.RightChild.LeftChild.Point, Is.EqualTo(points[5]));
-        }*/
+            Assert.That(tree.InternalArray[tree.Root], Is.EqualTo(points[0]));
+            Assert.That(tree.InternalArray[LeftChildIndex(tree.Root)], Is.EqualTo(points[1]));
+            Assert.That(tree.InternalArray[LeftChildIndex(LeftChildIndex(tree.Root))], Is.EqualTo(points[2]));
+            Assert.That(tree.InternalArray[RightChildIndex(LeftChildIndex(tree.Root))], Is.EqualTo(points[3]));
+            Assert.That(tree.InternalArray[RightChildIndex(tree.Root)], Is.EqualTo(points[4]));
+            Assert.That(tree.InternalArray[LeftChildIndex(RightChildIndex(tree.Root))], Is.EqualTo(points[5]));
+        }
 
 
         [Test]

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KDTree", "KDTree\KDTree.csproj", "{D35C4E61-DC99-4AD1-9A36-2F1E723F32C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supercluster.KDTree", "KDTree\Supercluster.KDTree.csproj", "{D35C4E61-DC99-4AD1-9A36-2F1E723F32C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KDTreeTests", "KDTreeTests\KDTreeTests.csproj", "{ECE0D8B6-16B0-4C0D-AF1F-EE0C819EC9C1}"
 EndProject

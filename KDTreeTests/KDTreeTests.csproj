@@ -78,9 +78,9 @@
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KDTree\KDTree.csproj">
+    <ProjectReference Include="..\KDTree\Supercluster.KDTree.csproj">
       <Project>{D35C4E61-DC99-4AD1-9A36-2F1E723F32C9}</Project>
-      <Name>KDTree</Name>
+      <Name>Supercluster.KDTree</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

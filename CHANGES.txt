@@ -37,4 +37,8 @@ Removed all the add/remove node methods.
 
 Change 7
 ========
-Switched KDTree to an array based implementation. Seeing small statistically significant speed increase
+Switched KDTree to an array based implementation. Seeing small statistically significant speed increase.
+
+Change 8
+========
+Created my own repo to break for dependency.

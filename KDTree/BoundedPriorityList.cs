@@ -6,7 +6,8 @@
     using System.Runtime.CompilerServices;
 
     /// <summary>
-    /// 
+    /// A list of limited length that remains sorted by TPriority. 
+    /// Insert is O(log n). Retreval is O(1)
     /// </summary>
     /// <typeparam name="TElement">The element to be </typeparam>
     /// <typeparam name="TPriority"></typeparam>

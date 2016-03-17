@@ -1,4 +1,8 @@
-﻿namespace Supercluster.KDTree
+﻿// <copyright file="BoundedPriorityList.cs" company="Eric Regina">
+// Copyright (c) Eric Regina. All rights reserved.
+// </copyright>
+
+namespace Supercluster.KDTree
 {
     using System;
     using System.Collections;
@@ -6,12 +10,12 @@
     using System.Runtime.CompilerServices;
 
     /// <summary>
-    /// A list of limited length that remains sorted by TPriority. 
+    /// A list of limited length that remains sorted BY TPriority/>.
     /// Useful for nearest neighbor searches.
     /// Insert is O(log n). Retreval is O(1)
     /// </summary>
-    /// <typeparam name="TElement">The element to be </typeparam>
-    /// <typeparam name="TPriority"></typeparam>
+    /// <typeparam name="TElement">The type of element the list maintains.</typeparam>
+    /// <typeparam name="TPriority">The type tht the elements are prioritized by.</typeparam>
     public class BoundedPriorityList<TElement, TPriority> : IEnumerable<TElement>
         where TPriority : IComparable<TPriority>
     {
@@ -50,7 +54,7 @@
         /// <summary>
         /// Gets the maximum allows capacity for the <see cref="BoundedPriorityList{TElement,TPriority}"/>
         /// </summary>
-        public int Capacity { get; private set; }
+        public int Capacity { get; }
 
         /// <summary>
         /// Returns true if the list is at maximum capacity.
@@ -63,31 +67,33 @@
         public int Count => this.priorityList.Count;
 
         /// <summary>
-        /// Indexer for the <see cref="TElement"/> items.
+        /// Indexer for the internal element array.
         /// </summary>
         /// <param name="index">The index in the array.</param>
-        /// <returns>The <see cref="TElement"/> at the specified index.</returns>
+        /// <returns>The element at the specified index.</returns>
         public TElement this[int index] => this.elementList[index];
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoundedPriorityList{TElement, TPriority}"/> class.
+        /// </summary>
+        /// <param name="capacity">The maximum capacity of the list.</param>
         public BoundedPriorityList(int capacity)
         {
-
             this.Capacity = capacity;
             this.priorityList = new List<TPriority>(capacity);
             this.elementList = new List<TElement>(capacity);
         }
 
         /// <summary>
-        /// Attempts to add the provided <see cref="TElement"/>. If the list
+        /// Attempts to add the provided  <paramref name="item"/>. If the list
         /// is currently at maximum capacity and the elements priority is greater
-        /// than or equal to the hiest priority, the item is not inserted. If the
-        /// item is eligable for insertion, the upon insertion the item that previously
+        /// than or equal to the hiest priority, the <paramref name = "item"/> is not inserted. If the
+        /// <paramref name = "item"/> is eligable for insertion, the upon insertion the <paramref name = "item"/> that previously
         /// had the largest priority is removed from the list.
         /// This is an O(log n) operation.
         /// </summary>
         /// <param name="item">The item to be inserted</param>
         /// <param name="priority">The priority of th given item.</param>
-
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Add(TElement item, TPriority priority)
         {
@@ -120,6 +126,7 @@
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
+        /// <returns>An enumerator.</returns>
         public IEnumerator<TElement> GetEnumerator()
         {
             return this.elementList.GetEnumerator();
@@ -128,6 +135,7 @@
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
+        /// <returns>An enumerator.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();

@@ -50,6 +50,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>Supercluster.KDTree.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\x64\Release\Supercluster.KDTree.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -75,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
     <None Include="packages.config" />
     <None Include="Supercluser.Key.pfx" />
     <None Include="Supercluster.KDTree.ruleset" />

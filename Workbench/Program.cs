@@ -10,12 +10,12 @@
 
     using KDTreeTests;
 
+    using Supercluster.KDTree;
 
     class Program
     {
         static void Main(string[] args)
         {
-
             TreeSpeedTests();
         }
 

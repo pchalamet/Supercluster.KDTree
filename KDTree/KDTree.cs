@@ -4,6 +4,9 @@ namespace KDTree
 {
     using System.Collections.Generic;
     using System.Linq;
+
+    using Supercluster.KDTree;
+
     using static Supercluster.KDTree.BinaryTreeUtilities;
 
     [Serializable]
@@ -48,12 +51,8 @@ namespace KDTree
             this.MaxValue = maxValue;
             this.Metric = metric;
 
-            this.GrowTree(0, 0, points.ToArray());
-            this.Root = 0;
+            this.GenerateTree(0, 0, points.ToArray());
         }
-
-
-        public int Root = -1;
 
         /// <summary>
         /// Grows a KD tree recursively via media splitting. We find the median by doing a full sort.
@@ -61,7 +60,7 @@ namespace KDTree
         /// <param name="index">The array index for the current node.</param>
         /// <param name="dim">The current splitting dimension.</param>
         /// <param name="points">The set of points remaining to be added to the kd-tree</param>
-        public void GrowTree(int index, int dim, TKey[][] points)
+        public void GenerateTree(int index, int dim, TKey[][] points)
         {
             // See wikipedia for a good explanation kd-tree construction.
             // https://en.wikipedia.org/wiki/K-d_tree
@@ -104,7 +103,7 @@ namespace KDTree
             }
             else
             {
-                this.GrowTree(LeftChildIndex(index), nextDim, leftPoints);
+                this.GenerateTree(LeftChildIndex(index), nextDim, leftPoints);
             }
 
             // Do the same for the right points
@@ -117,17 +116,15 @@ namespace KDTree
             }
             else
             {
-                this.GrowTree(RightChildIndex(index), nextDim, rightPoints);
+                this.GenerateTree(RightChildIndex(index), nextDim, rightPoints);
             }
         }
 
         public TKey[][] NearestNeighbors(TKey[] point, int neighboors)
         {
-            // TODO: We should check if there are any nodes to avoid errors
-
             var nearestNeighborList = new BoundedPriorityList<TKey[], double>(neighboors);
             var rect = HyperRect<TKey>.Infinite(this.Dimensions, this.MaxValue, this.MinValue);
-            this.AddNearestNeighbours(this.Root, point, rect, 0, nearestNeighborList, double.MaxValue);
+            this.AddNearestNeighbours(0, point, rect, 0, nearestNeighborList, double.MaxValue);
             return nearestNeighborList.ToArray();
         }
 
@@ -252,27 +249,21 @@ namespace KDTree
             }
         }
 
-        /*
-        public KDNode<TKey>[] RadialSearch(TKey[] center, TKey radius, int neighboors)
-        {
-            var nearestNeighbours = new NearestNeighbourList<KDNode<TKey>, TKey>(neighboors, this.MinValue);
 
-            AddNearestNeighbours(
-                Root,
+        /*
+        public TKey[][] RadialSearch(TKey[] center, double radius, int neighboor)
+        {
+            var nearestNeighbours = new BoundedPriorityList<TKey[], double>(neighboor);
+
+            this.AddNearestNeighbours(
+                0,
                 center,
-                HyperRect<TKey>.Infinite(dimensions, typeMath),
+                HyperRect<TKey>.Infinite(this.Dimensions, this.MaxValue, this.MinValue),
                 0,
                 nearestNeighbours,
-                typeMath.Multiply(radius, radius));
+                radius * radius);
 
-            neighboors = nearestNeighbours.Count;
-
-            var neighbourArray = new KDNode<TKey>[neighboors];
-
-            for (var index = 0; index < neighboors; index++)
-                neighbourArray[neighboors - index - 1] = nearestNeighbours.RemoveFurtherest();
-
-            return neighbourArray;
+            return nearestNeighbours.ToArray();
         }*/
 
         public int Count { get; private set; }

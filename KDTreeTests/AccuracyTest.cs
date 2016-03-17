@@ -38,12 +38,12 @@
 
             var tree = new KDTree.KDTree<double>(2, points, Utilities.L2Norm_Squared_Double, double.MinValue, double.MaxValue);
 
-            Assert.That(tree.InternalArray[tree.Root], Is.EqualTo(points[0]));
-            Assert.That(tree.InternalArray[LeftChildIndex(tree.Root)], Is.EqualTo(points[1]));
-            Assert.That(tree.InternalArray[LeftChildIndex(LeftChildIndex(tree.Root))], Is.EqualTo(points[2]));
-            Assert.That(tree.InternalArray[RightChildIndex(LeftChildIndex(tree.Root))], Is.EqualTo(points[3]));
-            Assert.That(tree.InternalArray[RightChildIndex(tree.Root)], Is.EqualTo(points[4]));
-            Assert.That(tree.InternalArray[LeftChildIndex(RightChildIndex(tree.Root))], Is.EqualTo(points[5]));
+            Assert.That(tree.InternalArray[0], Is.EqualTo(points[0]));
+            Assert.That(tree.InternalArray[LeftChildIndex(0)], Is.EqualTo(points[1]));
+            Assert.That(tree.InternalArray[LeftChildIndex(LeftChildIndex(0))], Is.EqualTo(points[2]));
+            Assert.That(tree.InternalArray[RightChildIndex(LeftChildIndex(0))], Is.EqualTo(points[3]));
+            Assert.That(tree.InternalArray[RightChildIndex(0)], Is.EqualTo(points[4]));
+            Assert.That(tree.InternalArray[LeftChildIndex(RightChildIndex(0))], Is.EqualTo(points[5]));
         }
 
 

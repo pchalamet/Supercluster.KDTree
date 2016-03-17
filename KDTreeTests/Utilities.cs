@@ -7,7 +7,7 @@ namespace KDTreeTests
     public static class Utilities
     {
         #region Metrics
-        public static Func<float[], float[], float> L2Norm_Squared_Float = (x, y) =>
+        public static Func<float[], float[], double> L2Norm_Squared_Float = (x, y) =>
         {
             float dist = 0f;
             for (int i = 0; i < x.Length; i++)

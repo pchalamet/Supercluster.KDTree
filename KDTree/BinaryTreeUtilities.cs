@@ -1,4 +1,4 @@
-﻿namespace KDTree
+﻿namespace Supercluster.KDTree
 {
     using System.Runtime.CompilerServices;
 
@@ -7,13 +7,13 @@
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int RightChildIndex(int index)
         {
-            return 2 * index + 2;
+            return (2 * index) + 2;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int LeftChildIndex(int index)
         {
-            return 2 * index + 1;
+            return (2 * index) + 1;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

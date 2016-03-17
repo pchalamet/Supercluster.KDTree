@@ -2,7 +2,7 @@
 {
 
     using NUnit.Framework;
-    using static KDTree.BinaryTreeUtilities;
+    using static Supercluster.KDTree.BinaryTreeUtilities;
 
     [TestFixture]
     public class AccuracyTest
@@ -16,11 +16,11 @@
         public void WikipediaBuildTests()
         {
             // Should generate the following tree:
-            //             7+2
+            //             7,2
             //              |
             //       +------+-----+
             //      5,4          9,6
-            //       +            +
+            //       |            |
             //   +---+---+     +--+
             //  2,3     4,7   8,1 
 
@@ -36,7 +36,7 @@
                              };
 
 
-            var tree = new KDTree.KDTree<double>(2, double.MinValue, double.MaxValue, Utilities.L2Norm_Squared_Double, points);
+            var tree = new KDTree.KDTree<double>(2, points, Utilities.L2Norm_Squared_Double, double.MinValue, double.MaxValue);
 
             Assert.That(tree.InternalArray[tree.Root], Is.EqualTo(points[0]));
             Assert.That(tree.InternalArray[LeftChildIndex(tree.Root)], Is.EqualTo(points[1]));
@@ -58,11 +58,11 @@
             var testData = Utilities.GenerateDoubles(testDataSize, range);
 
 
-            var tree = new KDTree.KDTree<double>(2, double.MinValue, double.MaxValue, Utilities.L2Norm_Squared_Double, treeData);
+            var tree = new KDTree.KDTree<double>(2, treeData, Utilities.L2Norm_Squared_Double);
 
             for (int i = 0; i < testDataSize; i++)
             {
-                var treeNearest = tree.GetNearestNeighbours(testData[i], 1);
+                var treeNearest = tree.NearestNeighbors(testData[i], 1);
                 var linearNearest = Utilities.LinearSearch(treeData, testData[i], Utilities.L2Norm_Squared_Double);
 
                 Assert.That(Utilities.L2Norm_Squared_Double(testData[i], linearNearest),

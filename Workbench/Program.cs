@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
+    using System.Runtime.CompilerServices;
 
     using KDTree;
 
@@ -14,7 +15,14 @@
     {
         static void Main(string[] args)
         {
+
             TreeSpeedTests();
+        }
+
+        public static T Test<T>()
+        {
+            var type = typeof(T);
+            return (T)type.GetField("MaxValue").GetValue(type);
         }
 
 
@@ -58,20 +66,25 @@
             var dataSize = 200000;
             var testDataSize = 1000;
             var range = 1000;
-
             var treeData = Utilities.GenerateFloats(dataSize, range);
             var testData = Utilities.GenerateFloats(testDataSize, range);
+            var tree_new = new KDTree.KDTree<float>(2, treeData, Utilities.L2Norm_Squared_Float);
 
-            // Setup new tree
-            var tree_new = new KDTree.KDTree<float>(2, float.MinValue, float.MaxValue, Utilities.L2Norm_Squared_Float, treeData);
+            var samples = new List<long>();
+            for (int j = 0; j < 50; j++)
+            {
+                // Setup new tree
 
-            Action<KDTree.KDTree<float>, float[][]> new_tree_Action = (tree, testSet) =>
+                var stopwatch_tree = new Stopwatch();
+                stopwatch_tree.Start();
+                for (int i = 0; i < testData.Length; i++)
                 {
-                    for (int i = 0; i < testSet.Length; i++)
-                    {
-                        var test = tree.GetNearestNeighbours(testSet[i], 1);
-                    }
-                };
+                    var test = tree_new.NearestNeighbors(testData[i], 1);
+                }
+                stopwatch_tree.Stop();
+                samples.Add(stopwatch_tree.ElapsedTicks);
+            }
+
 
 
             var stopwatch_linear = new Stopwatch();
@@ -83,12 +96,20 @@
             }
             stopwatch_linear.Stop();
             Console.WriteLine("Linear ticks: " + stopwatch_linear.ElapsedTicks);
+            // Console.ReadLine();
+
+
+
+            var statistic = CalculateStatistics(samples, samples);
+            Console.WriteLine("Method1 Average: " + statistic.Method1Average);
+            Console.WriteLine("Method2 Average: " + statistic.Method2Average);
+            Console.WriteLine("T-Statistic: " + statistic.TStatistic);
+            Console.WriteLine("Statistic should be greater than or less than +/- 1.645 for significance.");
+            Console.WriteLine("A negative statistics is better.\n");
             Console.ReadLine();
         }
 
         #region Statistics
-
-
 
         static PerformanceStatistics CalculateStatistics(List<long> samples1, List<long> samples2)
         {

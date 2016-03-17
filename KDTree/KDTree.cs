@@ -2,46 +2,67 @@
 
 namespace KDTree
 {
+    using System.Collections.Generic;
     using System.Linq;
-    using static BinaryTreeUtilities;
+    using static Supercluster.KDTree.BinaryTreeUtilities;
 
     [Serializable]
-    public class KDTree<TKey> where TKey : IComparable<TKey>
+    public class KDTree<TKey>
+        where TKey : IComparable<TKey>
     {
 
-        private readonly TKey minvalue;
-        private readonly TKey maxvalue;
-        public readonly TKey[][] InternalArray;
-        private readonly Func<TKey[], TKey[], TKey> Metric;
+        /// <summary>
+        /// The numbers of dimensions that the tree has.
+        /// </summary>
+        public int Dimensions { get; private set; }
 
-        public KDTree(int dimensions, TKey minValue, TKey maxValue, Func<TKey[], TKey[], TKey> metric, TKey[][] points)
+        /// <summary>
+        /// The metric function used to calculate distance between points.
+        /// </summary>
+        public Func<TKey[], TKey[], double> Metric { get; set; }
+
+        private TKey MinValue { get; set; }
+
+        private TKey MaxValue { get; set; }
+
+        public readonly TKey[][] InternalArray;
+
+        public KDTree(int dimensions, IEnumerable<TKey[]> points, Func<TKey[], TKey[], double> metric, TKey minValue = default(TKey), TKey maxValue = default(TKey))
         {
-            this.dimensions = dimensions;
-            var elementCount = (int)Math.Pow(2, (int)(Math.Log(points.Length) / Math.Log(2)) + 1);
+            if (minValue.Equals(default(TKey)))
+            {
+                var type = typeof(TKey);
+                this.MinValue = (TKey)type.GetField("MinValue").GetValue(type);
+            }
+
+            if (maxValue.Equals(default(TKey)))
+            {
+                var type = typeof(TKey);
+                this.MaxValue = (TKey)type.GetField("MaxValue").GetValue(type);
+            }
+
+            this.Dimensions = dimensions;
+            var elementCount = (int)Math.Pow(2, (int)(Math.Log(points.Count()) / Math.Log(2)) + 1);
             this.InternalArray = Enumerable.Repeat(default(TKey[]), elementCount).ToArray();
-            this.minvalue = minValue;
-            this.maxvalue = maxValue;
+            this.MinValue = minValue;
+            this.MaxValue = maxValue;
             this.Metric = metric;
 
-            this.GrowTree(0, 0, points);
+            this.GrowTree(0, 0, points.ToArray());
             this.Root = 0;
         }
 
-        private readonly int dimensions;
 
         public int Root = -1;
 
         /// <summary>
-        /// Grows a KD tree recursively
+        /// Grows a KD tree recursively via media splitting. We find the median by doing a full sort.
         /// </summary>
-        /// <param name="currentNode">The current node in the recursion.</param>
-        /// <param name="previousNode">The node in the previous level of the recursion. This is als the parent of the cirrent node.</param>
+        /// <param name="index">The array index for the current node.</param>
+        /// <param name="dim">The current splitting dimension.</param>
         /// <param name="points">The set of points remaining to be added to the kd-tree</param>
-        /// <param name="dim">The current splitting dimension of the kd-tree. This is the depth mod K, where K is the dimensionality of the data set and depth is the depth of the tree.</param>
         public void GrowTree(int index, int dim, TKey[][] points)
         {
-            // TODO: we need to some how set the count of the KD tree
-
             // See wikipedia for a good explanation kd-tree construction.
             // https://en.wikipedia.org/wiki/K-d_tree
 
@@ -56,8 +77,6 @@ namespace KDTree
             // The previous node becomes the parents of the current node.
             this.InternalArray[index] = medianPoint;
 
-
-
             // We now split the sorted points into 2 groups
             // 1st group: points before the median
             var leftPoints = new TKey[medianPointIdx][];
@@ -71,7 +90,7 @@ namespace KDTree
             // The current node's left and right values become the "roots" for
             // each recursion call. We also forward cycle to the next dimension.
 
-            var nextDim = (dim + 1) % this.dimensions; // select next dimension
+            var nextDim = (dim + 1) % this.Dimensions; // select next dimension
 
             // We only need to recurse if the point array contains more than one point
             // If the array has no points then the node stay a null value
@@ -102,20 +121,14 @@ namespace KDTree
             }
         }
 
-        public TKey[][] GetNearestNeighbours(TKey[] point, int count)
+        public TKey[][] NearestNeighbors(TKey[] point, int neighboors)
         {
+            // TODO: We should check if there are any nodes to avoid errors
 
-            /*
-                TODO: We should check if there are any nodes to avoid errors
-            */
-
-            var nearestNeighbours = new BoundedPriorityList<TKey[], TKey>(count);
-
-            var rect = HyperRect<TKey>.Infinite(dimensions, this.maxvalue, this.minvalue);
-
-            AddNearestNeighbours(this.Root, point, rect, 0, nearestNeighbours, this.maxvalue);
-
-            return nearestNeighbours.ToArray();
+            var nearestNeighborList = new BoundedPriorityList<TKey[], double>(neighboors);
+            var rect = HyperRect<TKey>.Infinite(this.Dimensions, this.MaxValue, this.MinValue);
+            this.AddNearestNeighbours(this.Root, point, rect, 0, nearestNeighborList, double.MaxValue);
+            return nearestNeighborList.ToArray();
         }
 
         /*
@@ -126,9 +139,9 @@ namespace KDTree
          *       dimension so that we end up with 2 sub hyper rects
          *       (current dimension = depth % dimensions)
          *   
-         *	 1.2 Check what sub rectangle the the target point resides in
-         *	     under the current dimension
-         *	     
+         *   1.2 Check what sub rectangle the the target point resides in
+         *       under the current dimension
+         *       
          *   1.3 Set that rect to the nearer rect and also the corresponding 
          *       child node to the nearest rect and node and the other rect 
          *       and child node to the further rect and child node (for use later)
@@ -160,8 +173,8 @@ namespace KDTree
             TKey[] target,
             HyperRect<TKey> rect,
             int depth,
-            BoundedPriorityList<TKey[], TKey> nearestNeighbours,
-            TKey maxSearchRadiusSquared)
+            BoundedPriorityList<TKey[], double> nearestNeighbours,
+            double maxSearchRadiusSquared)
         {
             if (this.InternalArray.Length <= nodeIndex || nodeIndex < 0 || this.InternalArray[nodeIndex] == null)
             {
@@ -169,7 +182,7 @@ namespace KDTree
             }
 
             // Work out the current dimension
-            int dimension = depth % this.dimensions;
+            int dimension = depth % this.Dimensions;
 
             // Split our hyper-rect into 2 sub rects along the current 
             // node's point on the current dimension
@@ -189,30 +202,26 @@ namespace KDTree
             var furtherNode = compare <= 0 ? RightChildIndex(nodeIndex) : LeftChildIndex(nodeIndex);
 
             // Let's walk down into the nearer branch
-            if (nearerNode != null)
-            {
-                this.AddNearestNeighbours(
-                    nearerNode,
-                    target,
-                    nearerRect,
-                    depth + 1,
-                    nearestNeighbours,
-                    maxSearchRadiusSquared);
-            }
-
-            TKey distanceSquaredToTarget;
+            this.AddNearestNeighbours(
+                nearerNode,
+                target,
+                nearerRect,
+                depth + 1,
+                nearestNeighbours,
+                maxSearchRadiusSquared);
 
             // Walk down into the further branch but only if our capacity hasn't been reached 
             // OR if there's a region in the further rect that's closer to the target than our
             // current furtherest nearest neighbour
-            TKey[] closestPointInFurtherRect = furtherRect.GetClosestPoint(target);
-            distanceSquaredToTarget = this.Metric(closestPointInFurtherRect, target);
+            var closestPointInFurtherRect = furtherRect.GetClosestPoint(target);
+            double distanceSquaredToTarget = this.Metric(closestPointInFurtherRect, target);
 
             if (distanceSquaredToTarget.CompareTo(maxSearchRadiusSquared) <= 0)
             {
                 if (nearestNeighbours.IsFull)
                 {
                     if (distanceSquaredToTarget.CompareTo(nearestNeighbours.MaxPriority) < 0)
+                    {
                         this.AddNearestNeighbours(
                             furtherNode,
                             target,
@@ -220,6 +229,7 @@ namespace KDTree
                             depth + 1,
                             nearestNeighbours,
                             maxSearchRadiusSquared);
+                    }
                 }
                 else
                 {
@@ -237,13 +247,15 @@ namespace KDTree
             distanceSquaredToTarget = this.Metric(this.InternalArray[nodeIndex], target);
 
             if (distanceSquaredToTarget.CompareTo(maxSearchRadiusSquared) <= 0)
+            {
                 nearestNeighbours.Add(this.InternalArray[nodeIndex], distanceSquaredToTarget);
+            }
         }
 
         /*
-        public KDNode<TKey>[] RadialSearch(TKey[] center, TKey radius, int count)
+        public KDNode<TKey>[] RadialSearch(TKey[] center, TKey radius, int neighboors)
         {
-            var nearestNeighbours = new NearestNeighbourList<KDNode<TKey>, TKey>(count, this.minvalue);
+            var nearestNeighbours = new NearestNeighbourList<KDNode<TKey>, TKey>(neighboors, this.MinValue);
 
             AddNearestNeighbours(
                 Root,
@@ -253,12 +265,12 @@ namespace KDTree
                 nearestNeighbours,
                 typeMath.Multiply(radius, radius));
 
-            count = nearestNeighbours.Count;
+            neighboors = nearestNeighbours.Count;
 
-            var neighbourArray = new KDNode<TKey>[count];
+            var neighbourArray = new KDNode<TKey>[neighboors];
 
-            for (var index = 0; index < count; index++)
-                neighbourArray[count - index - 1] = nearestNeighbours.RemoveFurtherest();
+            for (var index = 0; index < neighboors; index++)
+                neighbourArray[neighboors - index - 1] = nearestNeighbours.RemoveFurtherest();
 
             return neighbourArray;
         }*/

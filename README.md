@@ -1,4 +1,4 @@
-# KD-Tree
+# Supercluster.KDTree
 This is a [KD-Tree](https://en.wikipedia.org/wiki/K-d_tree) written completely in C#.  This project originally 
 started as a fork of the KD-Tree Written by [CodeandCats](https://github.com/codeandcats), however, the 
 structure and intention of this project has changed drastically from its origin. 
@@ -30,9 +30,8 @@ complicated than AVL or Red-Black trees. There do exist adaptive KD-Trees which 
 the underlying array as you would a tree.
 
 
-
 * The tree is generic. Only [`IComparable<T>`](https://msdn.microsoft.com/en-us/library/4d7sx9hd.aspx) is required.
-* The tree requires a metric (a distance measure function) `Func`. KDTrees are spatial data-structures and one only needs a metric function to implicitly define the [metric space](https://en.wikipedia.org/wiki/Metric_space) in which the KDTree lives.
+* The tree requires a metric (a distance measure function) `Func`. KD-Trees are spatial data-structures and one only needs a metric function to implicitly define the [metric space](https://en.wikipedia.org/wiki/Metric_space) in which the KD-Tree lives.
 
 
 ### In The Works
@@ -49,6 +48,8 @@ the underlying array as you would a tree.
 #### Special Thanks
 
    Thanks to [CodeandCats](https://github.com/codeandcats) for the original implementation that this was based off. I had fun ~~tearing apart~~ reading your code. ;)
+   
+   Thanks to [César Souza](https://github.com/cesarsouza) for your work on machine learning for .net. It has inspired me to try and do better!
 
    Also a small thanks to [BlueRaja](https://github.com/BlueRaja). While I didn't use any of your code your [high speed priority queue](https://github.com/BlueRaja/High-Speed-Priority-Queue-for-C-Sharp)
    inspired me to write my own custom data structure for the nearest-neighbor list which turned out to be way faster than any "off the shelf" solution.

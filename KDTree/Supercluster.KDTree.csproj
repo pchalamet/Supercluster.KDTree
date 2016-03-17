@@ -72,7 +72,6 @@
     <Compile Include="BinaryTreeUtilities.cs" />
     <Compile Include="HyperRect.cs" />
     <Compile Include="KDTree.cs" />
-    <Compile Include="KDNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

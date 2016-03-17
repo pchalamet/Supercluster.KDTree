@@ -7,6 +7,7 @@
 
     /// <summary>
     /// A list of limited length that remains sorted by TPriority. 
+    /// Useful for nearest neighbor searches.
     /// Insert is O(log n). Retreval is O(1)
     /// </summary>
     /// <typeparam name="TElement">The element to be </typeparam>

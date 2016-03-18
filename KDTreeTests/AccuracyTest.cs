@@ -2,7 +2,10 @@
 {
 
     using NUnit.Framework;
-    using static Supercluster.KDTree.BinaryTreeUtilities;
+
+    using Supercluster.KDTree.Utilities;
+
+    using static Supercluster.KDTree.Utilities.BinaryTreeNavigation;
 
     [TestFixture]
     public class AccuracyTest
@@ -37,6 +40,47 @@
 
 
             var tree = new KDTree.KDTree<double>(2, points, Utilities.L2Norm_Squared_Double, double.MinValue, double.MaxValue);
+
+            Assert.That(tree.InternalArray[0], Is.EqualTo(points[0]));
+            Assert.That(tree.InternalArray[LeftChildIndex(0)], Is.EqualTo(points[1]));
+            Assert.That(tree.InternalArray[LeftChildIndex(LeftChildIndex(0))], Is.EqualTo(points[2]));
+            Assert.That(tree.InternalArray[RightChildIndex(LeftChildIndex(0))], Is.EqualTo(points[3]));
+            Assert.That(tree.InternalArray[RightChildIndex(0)], Is.EqualTo(points[4]));
+            Assert.That(tree.InternalArray[LeftChildIndex(RightChildIndex(0))], Is.EqualTo(points[5]));
+        }
+
+
+        /// <summary>
+        /// Should build the tree displayed in the article:
+        /// https://en.wikipedia.org/wiki/K-d_tree
+        /// </summary>
+        [Test]
+        public void NodeNavigatorTests()
+        {
+            // Should generate the following tree:
+            //             7,2
+            //              |
+            //       +------+-----+
+            //      5,4          9,6
+            //       |            |
+            //   +---+---+     +--+
+            //  2,3     4,7   8,1 
+
+
+            var points = new double[][]
+                             {
+                                 new double[] { 7, 2 },
+                                 new double[] { 5, 4 },
+                                 new double[] { 2, 3 },
+                                 new double[] { 4, 7 },
+                                 new double[] { 9, 6 },
+                                 new double[] { 8, 1 }
+                             };
+
+
+            var tree = new KDTree.KDTree<double>(2, points, Utilities.L2Norm_Squared_Double, double.MinValue, double.MaxValue);
+            //var nav = new BinaryTreeNodeNavigator<double[]>(ref tree.InternalArray);
+
 
             Assert.That(tree.InternalArray[0], Is.EqualTo(points[0]));
             Assert.That(tree.InternalArray[LeftChildIndex(0)], Is.EqualTo(points[1]));

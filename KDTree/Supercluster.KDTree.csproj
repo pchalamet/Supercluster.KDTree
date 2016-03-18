@@ -71,10 +71,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoundedPriorityList.cs" />
-    <Compile Include="BinaryTreeUtilities.cs" />
+    <Compile Include="Utilities\BinaryTreeNavigation.cs" />
     <Compile Include="HyperRect.cs" />
     <Compile Include="KDTree.cs" />
-    <Compile Include="NodeNavigator.cs" />
+    <Compile Include="Utilities\BinaryTreeNodeNavigator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

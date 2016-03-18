@@ -7,7 +7,7 @@ namespace KDTree
 
     using Supercluster.KDTree;
 
-    using static Supercluster.KDTree.BinaryTreeUtilities;
+    using static Supercluster.KDTree.Utilities.BinaryTreeNavigation;
 
     [Serializable]
     public class KDTree<TKey>
@@ -24,14 +24,18 @@ namespace KDTree
         /// </summary>
         public Func<TKey[], TKey[], double> Metric { get; set; }
 
-        private TKey MinValue { get; set; }
+        private TKey MinValue { get; }
 
-        private TKey MaxValue { get; set; }
+        private TKey MaxValue { get; }
 
-        public TKey[][] InternalArray;
+        /// <summary>
+        /// The array in which the binary tree is stored. Enumerating this array is a level-order traversal of the tree.
+        /// </summary>
+        public TKey[][] InternalArray { get; }
 
         public KDTree(int dimensions, IEnumerable<TKey[]> points, Func<TKey[], TKey[], double> metric, TKey minValue = default(TKey), TKey maxValue = default(TKey))
         {
+
             if (minValue.Equals(default(TKey)))
             {
                 var type = typeof(TKey);

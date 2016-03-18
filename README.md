@@ -5,7 +5,7 @@ structure and intention of this project has changed drastically from its origin.
 
 ## About the Project
 
-**This is a KD-Tree that is optimized for machine learning applications.** (Infact, I am writing this for my machine learning library [Supercluster](https://github.com/MathFerret1013/Supercluster)) In machine learning data-sets
+This is a KD-Tree that is optimized for machine learning applications, **however, it can used for less intensive purposes as well**. (Infact, I am writing this for my machine learning library [Supercluster](https://github.com/MathFerret1013/Supercluster)) In machine learning data-sets
  are often built, re-built, and built again. Also, in machine learning, algorithms need to be **fast** 
 for look ups but it is more acceptable to be slow for construction.
 Thus the tree bas been designed with this philosophy in mind. General charateristics are:
@@ -14,9 +14,8 @@ Thus the tree bas been designed with this philosophy in mind. General charateris
     * For a 10,000 3-nearest-neighbor searches on a 1,000,000 node 2-Dimensional tree using floats is about 7.5 times than the KD-Tree 
 by [CodeandCats](https://github.com/codeandcats) (number based off of a 1,000,000 sample
 independent T-test for mean comparisons, equal variance assumed). 
-    * The nearest-neighbor list is a custom data structure (called a BoundedPriorityList) that remains sorted and has O(log(n)) insert, but it is often much faster than 
-(log (n)) as an item is ignored if it is larger than the lists current max-element.
-    * Utilizes .NET's new [aggressive inlining](https://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.methodimploptions.aspx) optimization is utilized *where appropriate*.
+    * The nearest-neighbor list is a custom data structure (called a BoundedPriorityList) that remains sorted and has O(log(n)) insert, but it is often much faster than O(log (n)) as an item is ignored if it is larger than the lists current max-element.
+    * Utilizes .NET's new [aggressive inlining](https://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.methodimploptions.aspx) optimization *where appropriate*.
     * The KD-Tree is implemented as an array. Index arithmetic is used to traverse nodes. This is faster (only slightly, but a statistically significant difference)
 than traversing node objects.
     * The tree is built in the standard-way using an exact median finding algorithm. 

@@ -19,10 +19,10 @@
             TreeSpeedTests();
         }
 
-        public static T Test<T>()
+        public static void Test()
         {
-            var type = typeof(T);
-            return (T)type.GetField("MaxValue").GetValue(type);
+            var rect = new HyperRect<double> { MaxPoint = new double[] { 2, 3 }, MinPoint = new double[] { -3, -2 } };
+
         }
 
 
@@ -68,18 +68,24 @@
             var range = 1000;
             var treeData = Utilities.GenerateFloats(dataSize, range);
             var testData = Utilities.GenerateFloats(testDataSize, range);
-            var tree_new = new KDTree.KDTree<float>(2, treeData, Utilities.L2Norm_Squared_Float);
 
             var samples = new List<long>();
-            for (int j = 0; j < 50; j++)
+            for (int j = 0; j < 100000; j++)
             {
                 // Setup new tree
-
+                // treeData = Utilities.GenerateFloats(dataSize, range);
+                // var tree_new = new KDTree.KDTree<float>(2, treeData, Utilities.L2Norm_Squared_Float);
+                //testData = Utilities.GenerateFloats(testDataSize, range); 
                 var stopwatch_tree = new Stopwatch();
+
                 stopwatch_tree.Start();
                 for (int i = 0; i < testData.Length; i++)
                 {
-                    var test = tree_new.NearestNeighbors(testData[i], 1);
+                    var rect = new HyperRect<double>();
+                    rect.MaxPoint = new double[] { 2, 3 };
+                    rect.MinPoint = new double[] { -3, -2 };
+
+                    // var test = tree_new.NearestNeighbors(testData[i], 1);
                 }
                 stopwatch_tree.Stop();
                 samples.Add(stopwatch_tree.ElapsedTicks);
@@ -88,6 +94,7 @@
 
 
             var stopwatch_linear = new Stopwatch();
+            treeData = Utilities.GenerateFloats(dataSize, range);
             Console.WriteLine("Linear Search For Comparison " + DateTime.Now);
             stopwatch_linear.Start();
             for (int i = 0; i < testDataSize; i++)
@@ -106,7 +113,7 @@
             Console.WriteLine("T-Statistic: " + statistic.TStatistic);
             Console.WriteLine("Statistic should be greater than or less than +/- 1.645 for significance.");
             Console.WriteLine("A negative statistics is better.\n");
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         #region Statistics

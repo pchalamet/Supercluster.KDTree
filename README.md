@@ -5,7 +5,7 @@ structure and intention of this project has changed drastically from its origin.
 
 ## About the Project
 
-This is a KD-Tree that is optimized for machine learning applications,*however, it can serve most casual purposes as well*. (Infact, I am writing this for my machine learning library [Supercluster](https://github.com/MathFerret1013/Supercluster)) In machine learning data-sets
+This is a KD-Tree that is optimized for machine learning applications, **however, it can used for less intensive purposes as well**. (Infact, I am writing this for my machine learning library [Supercluster](https://github.com/MathFerret1013/Supercluster)) In machine learning data-sets
  are often built, re-built, and built again. Also, in machine learning, algorithms need to be **fast** 
 for look ups but it is more acceptable to be slow for construction.
 Thus the tree bas been designed with this philosophy in mind. General charateristics are:

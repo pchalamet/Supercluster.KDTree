@@ -78,16 +78,16 @@
                              };
 
 
-            var tree = new KDTree.KDTree<double>(2, points, Utilities.L2Norm_Squared_Double, double.MinValue, double.MaxValue);
-            //var nav = new BinaryTreeNodeNavigator<double[]>(ref tree.InternalArray);
+            var tree = new KDTree.KDTree<double>(2, points, Utilities.L2Norm_Squared_Double);
+            var array = tree.InternalArray;
+            var nav = new BinaryTreeNodeNavigator<double[]>(ref array);
 
-
-            Assert.That(tree.InternalArray[0], Is.EqualTo(points[0]));
-            Assert.That(tree.InternalArray[LeftChildIndex(0)], Is.EqualTo(points[1]));
-            Assert.That(tree.InternalArray[LeftChildIndex(LeftChildIndex(0))], Is.EqualTo(points[2]));
-            Assert.That(tree.InternalArray[RightChildIndex(LeftChildIndex(0))], Is.EqualTo(points[3]));
-            Assert.That(tree.InternalArray[RightChildIndex(0)], Is.EqualTo(points[4]));
-            Assert.That(tree.InternalArray[LeftChildIndex(RightChildIndex(0))], Is.EqualTo(points[5]));
+            Assert.That(nav.Value, Is.EqualTo(points[0]));
+            Assert.That(nav.Left.Value, Is.EqualTo(points[1]));
+            Assert.That(nav.Left.Left.Value, Is.EqualTo(points[2]));
+            Assert.That(nav.Left.Right.Value, Is.EqualTo(points[3]));
+            Assert.That(nav.Right.Value, Is.EqualTo(points[4]));
+            Assert.That(nav.Right.Left.Value, Is.EqualTo(points[5]));
         }
 
 

@@ -63,29 +63,26 @@
 
         static void TreeSpeedTests()
         {
-            var dataSize = 200000;
-            var testDataSize = 1000;
-            var range = 1000;
-            var treeData = Utilities.GenerateFloats(dataSize, range);
-            var testData = Utilities.GenerateFloats(testDataSize, range);
+            var treeData = FileUtils.FromFile<float[][]>(@"C:\Users\Eric\Desktop\treedata.bin");
+            var testData = FileUtils.FromFile<float[][]>(@"C:\Users\Eric\Desktop\testdata.bin");
 
             var samples = new List<long>();
-            for (int j = 0; j < 100000; j++)
+            for (int j = 0; j < 50; j++)
             {
                 // Setup new tree
                 // treeData = Utilities.GenerateFloats(dataSize, range);
-                // var tree_new = new KDTree.KDTree<float>(2, treeData, Utilities.L2Norm_Squared_Float);
+                var tree_new = new KDTree.KDTree<float>(2, treeData, Utilities.L2Norm_Squared_Float);
                 //testData = Utilities.GenerateFloats(testDataSize, range); 
                 var stopwatch_tree = new Stopwatch();
 
                 stopwatch_tree.Start();
                 for (int i = 0; i < testData.Length; i++)
                 {
-                    var rect = new HyperRect<double>();
+                    /*var rect = new HyperRect<double>();
                     rect.MaxPoint = new double[] { 2, 3 };
                     rect.MinPoint = new double[] { -3, -2 };
-
-                    // var test = tree_new.NearestNeighbors(testData[i], 1);
+                    */
+                    var test = tree_new.NearestNeighbors(testData[i], 1);
                 }
                 stopwatch_tree.Stop();
                 samples.Add(stopwatch_tree.ElapsedTicks);
@@ -94,10 +91,9 @@
 
 
             var stopwatch_linear = new Stopwatch();
-            treeData = Utilities.GenerateFloats(dataSize, range);
             Console.WriteLine("Linear Search For Comparison " + DateTime.Now);
             stopwatch_linear.Start();
-            for (int i = 0; i < testDataSize; i++)
+            for (int i = 0; i < testData.Length; i++)
             {
                 var test = Utilities.LinearSearch(treeData, testData[i], Utilities.L2Norm_Squared_Float);
             }
@@ -113,7 +109,7 @@
             Console.WriteLine("T-Statistic: " + statistic.TStatistic);
             Console.WriteLine("Statistic should be greater than or less than +/- 1.645 for significance.");
             Console.WriteLine("A negative statistics is better.\n");
-            //Console.ReadLine();
+            Console.ReadLine();
         }
 
         #region Statistics

@@ -28,7 +28,7 @@ namespace KDTree
 
         private TKey MaxValue { get; set; }
 
-        public readonly TKey[][] InternalArray;
+        public TKey[][] InternalArray;
 
         public KDTree(int dimensions, IEnumerable<TKey[]> points, Func<TKey[], TKey[], double> metric, TKey minValue = default(TKey), TKey maxValue = default(TKey))
         {

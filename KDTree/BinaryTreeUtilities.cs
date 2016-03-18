@@ -2,6 +2,9 @@
 {
     using System.Runtime.CompilerServices;
 
+    /// <summary>
+    /// Contains methods used for doing index arithmetic to traverse nodes in a binary tree.
+    /// </summary>
     public static class BinaryTreeUtilities
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

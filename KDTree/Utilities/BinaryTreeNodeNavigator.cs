@@ -31,7 +31,7 @@ namespace Supercluster.KDTree.Utilities
         public BinaryTreeNodeNavigator<T> Left
             =>
                 LeftChildIndex(this.Index) < this.array.Length - 1
-                    ? new BinaryTreeNodeNavigator<T>(ref this.array, LeftChildIndex(this.Index))
+                    ? new BinaryTreeNodeNavigator<T>(this.array, LeftChildIndex(this.Index))
                     : null;
 
         /// <summary>
@@ -40,13 +40,13 @@ namespace Supercluster.KDTree.Utilities
         public BinaryTreeNodeNavigator<T> Right
                =>
                    RightChildIndex(this.Index) < this.array.Length - 1
-                       ? new BinaryTreeNodeNavigator<T>(ref this.array, RightChildIndex(this.Index))
+                       ? new BinaryTreeNodeNavigator<T>(this.array, RightChildIndex(this.Index))
                        : null;
 
         /// <summary>
         /// The parent of the current node.
         /// </summary>
-        public BinaryTreeNodeNavigator<T> Parent => this.Index == 0 ? null : new BinaryTreeNodeNavigator<T>(ref this.array, ParentIndex(this.Index));
+        public BinaryTreeNodeNavigator<T> Parent => this.Index == 0 ? null : new BinaryTreeNodeNavigator<T>(this.array, ParentIndex(this.Index));
 
         /// <summary>
         /// The value of the current node.
@@ -58,7 +58,7 @@ namespace Supercluster.KDTree.Utilities
         /// </summary>
         /// <param name="array">The array backing the binary tree.</param>
         /// <param name="index">The index of the node of interest in the array. If not given, the node navigator start at the 0 index (the root of the tree).</param>
-        public BinaryTreeNodeNavigator(ref T[] array, int index = 0)
+        public BinaryTreeNodeNavigator(T[] array, int index = 0)
         {
             this.Index = index;
             this.array = array;

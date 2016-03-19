@@ -80,8 +80,7 @@
 
 
             var tree = new KDTree<double>(2, points, Utilities.L2Norm_Squared_Double);
-            var array = tree.InternalArray;
-            var nav = new BinaryTreeNodeNavigator<double[]>(ref array);
+            var nav = tree.NodeNavigator;
 
             Assert.That(nav.Value, Is.EqualTo(points[0]));
             Assert.That(nav.Left.Value, Is.EqualTo(points[1]));

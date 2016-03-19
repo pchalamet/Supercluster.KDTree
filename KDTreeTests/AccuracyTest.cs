@@ -3,6 +3,7 @@
 
     using NUnit.Framework;
 
+    using Supercluster.KDTree;
     using Supercluster.KDTree.Utilities;
 
     using static Supercluster.KDTree.Utilities.BinaryTreeNavigation;
@@ -39,7 +40,7 @@
                              };
 
 
-            var tree = new KDTree.KDTree<double>(2, points, Utilities.L2Norm_Squared_Double, double.MinValue, double.MaxValue);
+            var tree = new KDTree<double>(2, points, Utilities.L2Norm_Squared_Double, double.MinValue, double.MaxValue);
 
             Assert.That(tree.InternalArray[0], Is.EqualTo(points[0]));
             Assert.That(tree.InternalArray[LeftChildIndex(0)], Is.EqualTo(points[1]));
@@ -78,7 +79,7 @@
                              };
 
 
-            var tree = new KDTree.KDTree<double>(2, points, Utilities.L2Norm_Squared_Double);
+            var tree = new KDTree<double>(2, points, Utilities.L2Norm_Squared_Double);
             var array = tree.InternalArray;
             var nav = new BinaryTreeNodeNavigator<double[]>(ref array);
 
@@ -102,7 +103,7 @@
             var testData = Utilities.GenerateDoubles(testDataSize, range);
 
 
-            var tree = new KDTree.KDTree<double>(2, treeData, Utilities.L2Norm_Squared_Double);
+            var tree = new KDTree<double>(2, treeData, Utilities.L2Norm_Squared_Double);
 
             for (int i = 0; i < testDataSize; i++)
             {

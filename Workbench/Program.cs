@@ -6,8 +6,6 @@
     using System.Linq;
     using System.Runtime.CompilerServices;
 
-    using KDTree;
-
     using KDTreeTests;
 
     using Supercluster.KDTree;
@@ -71,7 +69,7 @@
             {
                 // Setup new tree
                 // treeData = Utilities.GenerateFloats(dataSize, range);
-                var tree_new = new KDTree.KDTree<float>(2, treeData, Utilities.L2Norm_Squared_Float);
+                var tree_new = new KDTree<float>(2, treeData, Utilities.L2Norm_Squared_Float);
                 //testData = Utilities.GenerateFloats(testDataSize, range); 
                 var stopwatch_tree = new Stopwatch();
 

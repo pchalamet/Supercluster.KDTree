@@ -39,7 +39,7 @@ complicated than AVL or Red-Black trees. There do exist adaptive KD-Trees which 
 **TODO's**:
 
  * ~~Clean up the code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.~~
- * ~~* Document code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.~~
+ * ~~Document code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.~~
  * Make an example for the github wiki.
  * Publish a nuget package.
 

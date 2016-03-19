@@ -14,7 +14,7 @@ Thus the tree bas been designed with this philosophy in mind. General charateris
     * For a 10,000 3-nearest-neighbor searches on a 1,000,000 node 2-Dimensional tree using floats is about 7.5 times than the KD-Tree 
 by [CodeandCats](https://github.com/codeandcats) (number based off of a 1,000,000 sample
 independent T-test for mean comparisons, equal variance assumed). 
-    * The nearest-neighbor list is a custom data structure (called a BoundedPriorityList) that remains sorted and has O(log(n)) insert, but it is often much faster than O(log (n)) as an item is ignored if it is larger than the lists current max-element.
+    * The nearest-neighbor list is a custom data structure (called a BoundedPriorityList) that remains sorted and has O(log n) insert, but it is often much faster than O(log n) as an item is ignored if it is larger than the lists current max-element.
     * Utilizes .NET's new [aggressive inlining](https://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.methodimploptions.aspx) optimization *where appropriate*.
     * The KD-Tree is implemented as an array. Index arithmetic is used to traverse nodes. This is faster (only slightly, but a statistically significant difference)
 than traversing node objects.
@@ -38,8 +38,8 @@ complicated than AVL or Red-Black trees. There do exist adaptive KD-Trees which 
 
 **TODO's**:
 
- * Clean up the code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.
- * Document code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.
+ * ~~Clean up the code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.~~
+ * ~~Document code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.~~
  * Make an example for the github wiki.
  * Publish a nuget package.
 
@@ -47,7 +47,7 @@ complicated than AVL or Red-Black trees. There do exist adaptive KD-Trees which 
 
    Thanks to [CodeandCats](https://github.com/codeandcats) for the original implementation that this was based off. I had fun ~~tearing apart~~ reading your code. ;)
    
-   Thanks to [César Souza](https://github.com/cesarsouza) for your work on machine learning for .net. It has inspired me to try and do better!
+   Thanks to [César Souza](https://github.com/cesarsouza) for your work on machine learning for .NET. It has inspired me to try and do better!
 
    Also a small thanks to [BlueRaja](https://github.com/BlueRaja). While I didn't use any of your code your [high speed priority queue](https://github.com/BlueRaja/High-Speed-Priority-Queue-for-C-Sharp)
    inspired me to write my own custom data structure for the nearest-neighbor list which turned out to be way faster than any "off the shelf" solution.

@@ -112,7 +112,7 @@ namespace KDTreeTests
 
         public static T[][] LinearRadialSearch<T>(T[][] data, T[] point, Func<T[], T[], double> metric, double radius)
         {
-            var pointsInRadius = new BoundedPriorityList<T[], double>(data.Length);
+            var pointsInRadius = new BoundedPriorityList<T[], double>(data.Length, true);
 
             for (int i = 0; i < data.Length; i++)
             {

@@ -75,13 +75,26 @@ namespace Supercluster.KDTree
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BoundedPriorityList{TElement, TPriority}"/> class.
+        /// Note: You should not have <paramref name="allocate"/> set to true, and the capacity set to a very large number.
+        /// Especially if you will be creating and destroying many <see cref="BoundedPriorityList{TElement,TPriority}"/> very rapidly.
+        /// If you ignore this advice you will create lots of memory pressure. If you don't understand why this is a problem you should
+        /// understand the garbadge collector. Please read: https://msdn.microsoft.com/en-us/library/ee787088.aspx
         /// </summary>
         /// <param name="capacity">The maximum capacity of the list.</param>
-        public BoundedPriorityList(int capacity)
+        /// <param name="allocate">If true, initializes the internal lists for the <see cref="BoundedPriorityList{TElement,TPriority}"/> with an initial capacity of <paramref name="capacity"/>.</param>
+        public BoundedPriorityList(int capacity, bool allocate = false)
         {
             this.Capacity = capacity;
-            this.priorityList = new List<TPriority>(capacity);
-            this.elementList = new List<TElement>(capacity);
+            if (allocate)
+            {
+                this.priorityList = new List<TPriority>(capacity);
+                this.elementList = new List<TElement>(capacity);
+            }
+            else
+            {
+                this.priorityList = new List<TPriority>();
+                this.elementList = new List<TElement>();
+            }
         }
 
         /// <summary>

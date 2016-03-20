@@ -95,7 +95,7 @@ namespace Supercluster.KDTree
 
             var pointsArray = points.ToArray();
 
-            // Calculate the number of nodes needed to contain the binary tree.
+            // Calculate the number of nodes needed to contain the binar6y tree.
             // This is equivalent to finding the power of 2 greater than the number of points
             var elementCount = (int)Math.Pow(2, (int)(Math.Log(pointsArray.Length) / Math.Log(2)) + 1);
             this.Dimensions = dimensions;
@@ -113,7 +113,7 @@ namespace Supercluster.KDTree
         /// <returns>The</returns>
         public TDimension[][] NearestNeighbors(TDimension[] point, int neighbors)
         {
-            var nearestNeighborList = new BoundedPriorityList<TDimension[], double>(neighbors);
+            var nearestNeighborList = new BoundedPriorityList<TDimension[], double>(neighbors, true);
             var rect = HyperRect<TDimension>.Infinite(this.Dimensions, this.MaxValue, this.MinValue);
             this.SearchForNearestNeighbors(0, point, rect, 0, nearestNeighborList, double.MaxValue);
             return nearestNeighborList.ToArray();
@@ -149,7 +149,7 @@ namespace Supercluster.KDTree
             }
             else
             {
-                var nearestNeighbors = new BoundedPriorityList<TDimension[], double>(this.Count);
+                var nearestNeighbors = new BoundedPriorityList<TDimension[], double>(neighboors);
                 this.SearchForNearestNeighbors(
                     0,
                     center,

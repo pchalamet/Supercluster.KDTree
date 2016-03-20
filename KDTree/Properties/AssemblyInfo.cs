@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Supercluster.KDTree")]
-[assembly: AssemblyDescription("An over-optimized, easy to use, KD-Tree for machine learning and big-data applications.")]
+[assembly: AssemblyDescription("An extremely fast, easy to use, KD-Tree optimized for machine learning and big-data applications.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Eric Regina / MathFerret1013")]
 [assembly: AssemblyProduct("KDTree")]

@@ -10,9 +10,8 @@ namespace Supercluster.KDTree
     using System.Runtime.CompilerServices;
 
     /// <summary>
-    /// A list of limited length that remains sorted BY TPriority/>.
-    /// Useful for nearest neighbor searches.
-    /// Insert is O(log n). Retreval is O(1)
+    /// A list of limited length that remains sorted by <typeparamref name="TPriority"/>.
+    /// Useful for keeping track of items in nearest neighbor searches. Insert is O(log n). Retreval is O(1)
     /// </summary>
     /// <typeparam name="TElement">The type of element the list maintains.</typeparam>
     /// <typeparam name="TPriority">The type tht the elements are prioritized by.</typeparam>

@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 namespace KDTreeTests
 {
+    using System.Linq;
+
+    using Supercluster.KDTree;
+
     public static class Utilities
     {
         #region Metrics
@@ -104,6 +108,22 @@ namespace KDTreeTests
             }
 
             return bestPoint;
+        }
+
+        public static T[][] LinearRadialSearch<T>(T[][] data, T[] point, Func<T[], T[], double> metric, double radius)
+        {
+            var pointsInRadius = new BoundedPriorityList<T[], double>(data.Length);
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                var currentDist = metric(point, data[i]);
+                if (radius >= currentDist)
+                {
+                    pointsInRadius.Add(data[i], currentDist);
+                }
+            }
+
+            return pointsInRadius.ToArray();
         }
 
         #endregion

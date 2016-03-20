@@ -128,19 +128,38 @@ namespace Supercluster.KDTree
         /// <returns>The specified number of closest points in the hyper-sphere</returns>
         public TDimension[][] RadialSearch(TDimension[] center, double radius, int neighboors = -1)
         {
-            var nearestNeighbors = new BoundedPriorityList<TDimension[], double>(neighboors == -1 ? this.Count : neighboors);
+            // The call TrimExcess, especially for large mostly sparse lists, is expensive.
+            // To void calling this code when given a valid number of neighboors, we simply
+            // use an if-then block and repeat the code. It is not the most elegant solution,
+            // but it is simple.
+            if (neighboors == -1)
+            {
+                var nearestNeighbors = new BoundedPriorityList<TDimension[], double>(this.Count);
+                this.SearchForNearestNeighbors(
+                    0,
+                    center,
+                    HyperRect<TDimension>.Infinite(this.Dimensions, this.MaxValue, this.MinValue),
+                    0,
+                    nearestNeighbors,
+                    radius);
 
-            this.SearchForNearestNeighbors(
-                0,
-                center,
-                HyperRect<TDimension>.Infinite(this.Dimensions, this.MaxValue, this.MinValue),
-                0,
-                nearestNeighbors,
-                radius * radius);
+                var nn = nearestNeighbors.ToList();
+                nn.TrimExcess();
+                return nn.ToArray();
+            }
+            else
+            {
+                var nearestNeighbors = new BoundedPriorityList<TDimension[], double>(this.Count);
+                this.SearchForNearestNeighbors(
+                    0,
+                    center,
+                    HyperRect<TDimension>.Infinite(this.Dimensions, this.MaxValue, this.MinValue),
+                    0,
+                    nearestNeighbors,
+                    radius);
 
-            var nn = nearestNeighbors.ToList();
-            nn.TrimExcess();
-            return nn.ToArray();
+                return nearestNeighbors.ToArray();
+            }
         }
 
         /// <summary>

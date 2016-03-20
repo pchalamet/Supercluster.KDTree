@@ -1,5 +1,6 @@
 ﻿namespace KDTreeTests
 {
+    using System.Linq;
 
     using NUnit.Framework;
 
@@ -113,6 +114,29 @@
                     Is.EqualTo(Utilities.L2Norm_Squared_Double(testData[i], treeNearest[0])));
             }
         }
+
+
+        [Test]
+        public void RadialSearchTest()
+        {
+            var dataSize = 10000;
+            var testDataSize = 100;
+            var range = 1000;
+            var radius = 100;
+
+            var treeData = Utilities.GenerateDoubles(dataSize, range);
+            var testData = Utilities.GenerateDoubles(testDataSize, range);
+            var tree = new KDTree<double>(2, treeData, Utilities.L2Norm_Squared_Double);
+
+            for (int i = 0; i < testDataSize; i++)
+            {
+                var treeRadial = tree.RadialSearch(testData[i], radius);
+                var linearRadial = Utilities.LinearRadialSearch(treeData, testData[i], Utilities.L2Norm_Squared_Double, radius);
+
+                Assert.That(treeRadial.SequenceEqual(linearRadial), Is.EqualTo(true));
+            }
+        }
     }
 }
+
 

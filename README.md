@@ -9,7 +9,7 @@ This is a KD-Tree that is optimized for machine learning applications, **however
  are often built, re-built, and built again. Also, in machine learning, algorithms need to be **fast** 
 for look ups but it is more acceptable to be slow for construction.
 Thus the tree bas been designed with this philosophy in mind. General charateristics are:
-
+* **The code is unit tested and well documented.** Stylecop, unit-test, wiki tutorials and MSDN style docs. It's all here.
 * **The tree is extremely fast for search.** 
     * For a 10,000 3-nearest-neighbor searches on a 1,000,000 node 2-Dimensional tree using floats is about 7.5 times than the KD-Tree 
 by [CodeandCats](https://github.com/codeandcats) (number based off of a 1,000,000 sample
@@ -26,22 +26,15 @@ likely to create a balanced tree. This allows for search time to be as close to 
 rebuild the tree to "balance" the tree after deletion. This is because balancing a KD-Tree is much more 
 complicated than AVL or Red-Black trees. There do exist adaptive KD-Trees which auto-balance, look it up if you need one.
 * **There is no node object used in the KDTree class.** but there is a **NodeNavigator** class which allows you to traverse the tree (or any array) using familiar, left, right, parent properties of a node. 
-
-
 * The tree is generic. Only [`IComparable<T>`](https://msdn.microsoft.com/en-us/library/4d7sx9hd.aspx) is required.
 * The tree requires a metric (a distance measure function) `Func`. KD-Trees are spatial data-structures and one only needs a metric function to implicitly define the [metric space](https://en.wikipedia.org/wiki/Metric_space) in which the KD-Tree lives.
 
 
-### In The Works
 
- The core of the code is there and everything is working and unit tested. But there is stil some work to be done.
-
-**TODO's**:
-
- * ~~Clean up the code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.~~
- * ~~Document code to [stylecop](https://visualstudiogallery.msdn.microsoft.com/cac2a05b-6eb6-4fa2-95b9-1f8d011e6cae) standards.~~
- * Make an example for the github wiki.
- * Publish a nuget package.
+**Documentation and Tutorial**:
+*  MSDN Style Documentation: http://mathferret1013.github.io/Supercluster.KDTree
+*  Wiki and Tutorials: https://github.com/MathFerret1013/Supercluster.KDTree/wiki
+*  Nuget Package:
 
 #### Special Thanks
 

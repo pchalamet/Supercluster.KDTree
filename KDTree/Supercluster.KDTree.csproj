@@ -58,7 +58,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Supercluser.Key.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -75,7 +76,6 @@
   <ItemGroup>
     <AdditionalFiles Include="stylecop.json" />
     <None Include="packages.config" />
-    <None Include="Supercluser.Key.pfx" />
     <None Include="Supercluster.KDTree.ruleset" />
   </ItemGroup>
   <ItemGroup>

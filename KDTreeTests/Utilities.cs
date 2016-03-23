@@ -67,7 +67,7 @@ namespace KDTreeTests
         #region Searches
 
         /// <summary>
-        /// Performs a linear search on a given data set to find a point that is closest to the gven point
+        /// Performs a linear search on a given points set to find a nodes that is closest to the gven nodes
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data"></param>
@@ -110,6 +110,25 @@ namespace KDTreeTests
             return bestPoint;
         }
 
+        public static Tuple<TPoint[], TNode> LinearSearch<TPoint, TNode>(TPoint[][] points, TNode[] nodes, TPoint[] target, Func<TPoint[], TPoint[], double> metric)
+        {
+            var bestIndex = 0;
+            var bestDist = Double.MaxValue;
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                var currentDist = metric(points[i], target);
+                if (bestDist > currentDist)
+                {
+                    bestDist = currentDist;
+                    bestIndex = i;
+                }
+            }
+
+            return new Tuple<TPoint[], TNode>(points[bestIndex], nodes[bestIndex]);
+        }
+
+
         public static T[][] LinearRadialSearch<T>(T[][] data, T[] point, Func<T[], T[], double> metric, double radius)
         {
             var pointsInRadius = new BoundedPriorityList<T[], double>(data.Length, true);
@@ -124,6 +143,23 @@ namespace KDTreeTests
             }
 
             return pointsInRadius.ToArray();
+        }
+
+
+        public static Tuple<TPoint[], TNode>[] LinearRadialSearch<TPoint, TNode>(TPoint[][] points, TNode[] nodes, TPoint[] target, Func<TPoint[], TPoint[], double> metric, double radius)
+        {
+            var pointsInRadius = new BoundedPriorityList<int, double>(points.Length, true);
+
+            for (int i = 0; i < points.Length; i++)
+            {
+                var currentDist = metric(target, points[i]);
+                if (radius >= currentDist)
+                {
+                    pointsInRadius.Add(i, currentDist);
+                }
+            }
+
+            return pointsInRadius.Select(idx => new Tuple<TPoint[], TNode>(points[idx], nodes[idx])).ToArray();
         }
 
         #endregion

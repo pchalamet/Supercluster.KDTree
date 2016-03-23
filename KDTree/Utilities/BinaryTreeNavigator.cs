@@ -62,7 +62,7 @@ namespace Supercluster.KDTree.Utilities
         public TNode Node => this.nodeArray[this.Index];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BinaryTreeNavigatoravigator{TPoint,TNode}"/> class.
+        /// Initializes a new instance of the <see cref="BinaryTreeNavigator{TPoint, TNode}"/> class.
         /// </summary>
         /// <param name="pointArray">The point array backing the binary tree.</param>
         /// <param name="nodeArray">The node array corresponding to the point array.</param>

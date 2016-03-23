@@ -58,7 +58,8 @@ namespace Supercluster.KDTree
         /// <summary>
         /// Gets a <see cref="BinaryTreeNavigator{TPoint,TNode}"/> that allows for manual tree navigation,
         /// </summary>
-        public BinaryTreeNavigator<TDimension[], TNode> Navigator => new BinaryTreeNavigator<TDimension[], TNode>(this.InternalPointArray, this.InternalNodeArray);
+        public BinaryTreeNavigator<TDimension[], TNode> Navigator
+            => new BinaryTreeNavigator<TDimension[], TNode>(this.InternalPointArray, this.InternalNodeArray);
 
         /// <summary>
         /// The maximum value along any dimension.
@@ -79,7 +80,13 @@ namespace Supercluster.KDTree
         /// <param name="metric">The metric function which implicitly defines the metric space in which the KDTree operates in.</param>
         /// <param name="searchWindowMinValue">The minimum value to be used in node searches. If null, we assume that <typeparamref name="TDimension"/> has a static field named "MinValue". All numeric structs have this field.</param>
         /// <param name="searchWindowMaxValue">The maximum value to be used in node searches. If null, we assume that <typeparamref name="TDimension"/> has a static field named "MaxValue". All numeric structs have this field.</param>
-        public KDTree(int dimensions, IEnumerable<TDimension[]> points, IEnumerable<TNode> nodes, Func<TDimension[], TDimension[], double> metric, TDimension searchWindowMinValue = default(TDimension), TDimension searchWindowMaxValue = default(TDimension))
+        public KDTree(
+            int dimensions,
+            IEnumerable<TDimension[]> points,
+            IEnumerable<TNode> nodes,
+            Func<TDimension[], TDimension[], double> metric,
+            TDimension searchWindowMinValue = default(TDimension),
+            TDimension searchWindowMaxValue = default(TDimension))
         {
             // Attempt find the Min/Max value if null.
             if (searchWindowMinValue.Equals(default(TDimension)))
@@ -121,30 +128,32 @@ namespace Supercluster.KDTree
         /// <param name="point">The point whose neighbors we search for.</param>
         /// <param name="neighbors">The number of neighboors to look for.</param>
         /// <returns>The</returns>
-        public TDimension[][] NearestNeighbors(TDimension[] point, int neighbors)
+        public Tuple<TDimension[], TNode>[] NearestNeighbors(TDimension[] point, int neighbors)
         {
-            var nearestNeighborList = new BoundedPriorityList<TDimension[], double>(neighbors, true);
+            var nearestNeighborList = new BoundedPriorityList<int, double>(neighbors, true);
             var rect = HyperRect<TDimension>.Infinite(this.Dimensions, this.MaxValue, this.MinValue);
             this.SearchForNearestNeighbors(0, point, rect, 0, nearestNeighborList, double.MaxValue);
-            return nearestNeighborList.ToArray();
+
+            return nearestNeighborList.ToResultSet(this);
         }
 
         /// <summary>
-        /// Searches for the closest points in a hyper-sphere around the given center.
+        /// Searches for the closest points in a hyper-sphere around the g`iven center.
         /// </summary>
         /// <param name="center">The center of the hyper-sphere</param>
         /// <param name="radius">The radius of the hyper-sphere</param>
         /// <param name="neighboors">The number of neighbors to return.</param>
         /// <returns>The specified number of closest points in the hyper-sphere</returns>
-        public TDimension[][] RadialSearch(TDimension[] center, double radius, int neighboors = -1)
+        public Tuple<TDimension[], TNode>[] RadialSearch(TDimension[] center, double radius, int neighboors = -1)
         {
+            // TODO: Remove this comment
             // The call TrimExcess, especially for large mostly sparse lists, is expensive.
-            // To void calling this code when given a valid number of neighboors, we simply
+            // To avoid calling this code when given a valid number of neighboors, we simply
             // use an if-then block and repeat the code. It is not the most elegant solution,
             // but it is simple.
             if (neighboors == -1)
             {
-                var nearestNeighbors = new BoundedPriorityList<TDimension[], double>(this.Count);
+                var nearestNeighbors = new BoundedPriorityList<int, double>(this.Count);
                 this.SearchForNearestNeighbors(
                     0,
                     center,
@@ -153,13 +162,11 @@ namespace Supercluster.KDTree
                     nearestNeighbors,
                     radius);
 
-                var nn = nearestNeighbors.ToList();
-                nn.TrimExcess();
-                return nn.ToArray();
+                return nearestNeighbors.ToResultSet(this);
             }
             else
             {
-                var nearestNeighbors = new BoundedPriorityList<TDimension[], double>(neighboors);
+                var nearestNeighbors = new BoundedPriorityList<int, double>(neighboors);
                 this.SearchForNearestNeighbors(
                     0,
                     center,
@@ -168,7 +175,7 @@ namespace Supercluster.KDTree
                     nearestNeighbors,
                     radius);
 
-                return nearestNeighbors.ToArray();
+                return nearestNeighbors.ToResultSet(this);
             }
         }
 
@@ -179,7 +186,11 @@ namespace Supercluster.KDTree
         /// <param name="dim">The current splitting dimension.</param>
         /// <param name="points">The set of points remaining to be added to the kd-tree</param>
         /// <param name="nodes">The set of nodes RE</param>
-        private void GenerateTree(int index, int dim, IReadOnlyCollection<TDimension[]> points, IEnumerable<TNode> nodes)
+        private void GenerateTree(
+            int index,
+            int dim,
+            IReadOnlyCollection<TDimension[]> points,
+            IEnumerable<TNode> nodes)
         {
             // See wikipedia for a good explanation kd-tree construction.
             // https://en.wikipedia.org/wiki/K-d_tree
@@ -209,7 +220,12 @@ namespace Supercluster.KDTree
             // 2nd group: Points after the median
             var rightPoints = new TDimension[sortedPoints.Length - (medianPointIdx + 1)][];
             var rightNodes = new TNode[sortedPoints.Length - (medianPointIdx + 1)];
-            Array.Copy(sortedPoints.Select(z => z.Point).ToArray(), medianPointIdx + 1, rightPoints, 0, rightPoints.Length);
+            Array.Copy(
+                sortedPoints.Select(z => z.Point).ToArray(),
+                medianPointIdx + 1,
+                rightPoints,
+                0,
+                rightPoints.Length);
             Array.Copy(sortedPoints.Select(z => z.Node).ToArray(), medianPointIdx + 1, rightNodes, 0, rightNodes.Length);
 
             // We new recurse, passing the left and right arrays for arguments.
@@ -261,10 +277,11 @@ namespace Supercluster.KDTree
             TDimension[] target,
             HyperRect<TDimension> rect,
             int dimension,
-            BoundedPriorityList<TDimension[], double> nearestNeighbors,
+            BoundedPriorityList<int, double> nearestNeighbors,
             double maxSearchRadiusSquared)
         {
-            if (this.InternalPointArray.Length <= nodeIndex || nodeIndex < 0 || this.InternalPointArray[nodeIndex] == null)
+            if (this.InternalPointArray.Length <= nodeIndex || nodeIndex < 0
+                || this.InternalPointArray[nodeIndex] == null)
             {
                 return;
             }
@@ -335,8 +352,9 @@ namespace Supercluster.KDTree
             distanceSquaredToTarget = this.Metric(this.InternalPointArray[nodeIndex], target);
             if (distanceSquaredToTarget.CompareTo(maxSearchRadiusSquared) <= 0)
             {
-                nearestNeighbors.Add(this.InternalPointArray[nodeIndex], distanceSquaredToTarget);
+                nearestNeighbors.Add(nodeIndex, distanceSquaredToTarget);
             }
         }
     }
+
 }

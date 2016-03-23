@@ -1,4 +1,8 @@
-﻿namespace KDTreeTests
+﻿using KDTreeTests;
+
+using NUnit.Framework;
+
+namespace KDTreeTests
 {
     using System.Linq;
 
@@ -100,10 +104,10 @@
             Assert.That(nav.Right.Node, Is.EqualTo(nodes[4]));
             Assert.That(nav.Right.Left.Node, Is.EqualTo(nodes[5]));
         }
-    }
-}
 
-/*
+
+
+
         [Test]
         public void FindNearestNeighborTest()
         {
@@ -111,22 +115,24 @@
             var testDataSize = 100;
             var range = 1000;
 
-            var treeData = Utilities.GenerateDoubles(dataSize, range);
+            var treePoints = Utilities.GenerateDoubles(dataSize, range);
+            var treeNodes = Utilities.GenerateDoubles(dataSize, range).Select(d => d.ToString()).ToArray();
             var testData = Utilities.GenerateDoubles(testDataSize, range);
 
 
-            var tree = new KDTree<double>(2, treeData, Utilities.L2Norm_Squared_Double);
+            var tree = new KDTree<double, string>(2, treePoints, treeNodes, Utilities.L2Norm_Squared_Double);
 
             for (int i = 0; i < testDataSize; i++)
             {
                 var treeNearest = tree.NearestNeighbors(testData[i], 1);
-                var linearNearest = Utilities.LinearSearch(treeData, testData[i], Utilities.L2Norm_Squared_Double);
+                var linearNearest = Utilities.LinearSearch(treePoints, treeNodes, testData[i], Utilities.L2Norm_Squared_Double);
 
-                Assert.That(Utilities.L2Norm_Squared_Double(testData[i], linearNearest),
-                    Is.EqualTo(Utilities.L2Norm_Squared_Double(testData[i], treeNearest[0])));
+                Assert.That(Utilities.L2Norm_Squared_Double(testData[i], linearNearest.Item1), Is.EqualTo(Utilities.L2Norm_Squared_Double(testData[i], treeNearest[0].Item1)));
+
+                // TODO: wrote linear search for both node and point arrays
+                Assert.That(treeNearest[0].Item2, Is.EqualTo(linearNearest.Item2));
             }
         }
-
 
         [Test]
         public void RadialSearchTest()
@@ -137,15 +143,28 @@
             var radius = 100;
 
             var treeData = Utilities.GenerateDoubles(dataSize, range);
+            var treeNodes = Utilities.GenerateDoubles(dataSize, range).Select(d => d.ToString()).ToArray();
             var testData = Utilities.GenerateDoubles(testDataSize, range);
-            var tree = new KDTree<double>(2, treeData, Utilities.L2Norm_Squared_Double);
+            var tree = new KDTree<double, string>(2, treeData, treeNodes, Utilities.L2Norm_Squared_Double);
 
             for (int i = 0; i < testDataSize; i++)
             {
                 var treeRadial = tree.RadialSearch(testData[i], radius);
-                var linearRadial = Utilities.LinearRadialSearch(treeData, testData[i], Utilities.L2Norm_Squared_Double, radius);
+                var linearRadial = Utilities.LinearRadialSearch(
+                    treeData,
+                    treeNodes,
+                    testData[i],
+                    Utilities.L2Norm_Squared_Double,
+                    radius);
 
-                Assert.That(treeRadial.SequenceEqual(linearRadial), Is.EqualTo(true));
+                for (int j = 0; j < treeRadial.Length; j++)
+                {
+                    Assert.That(treeRadial[j].Item1, Is.EqualTo(linearRadial[j].Item1));
+                    Assert.That(treeRadial[j].Item2, Is.EqualTo(linearRadial[j].Item2));
+                }
+
+
             }
-        }*/
-
+        }
+    }
+}

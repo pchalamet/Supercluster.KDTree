@@ -56,9 +56,9 @@ namespace Supercluster.KDTree
         public Func<TDimension[], TDimension[], double> Metric { get; set; }
 
         /// <summary>
-        /// Gets a <see cref="BinaryTreeNodeNavigator{T}"/> that allows for manual tree navigation,
+        /// Gets a <see cref="BinaryTreeNavigator{TPoint,TNode}"/> that allows for manual tree navigation,
         /// </summary>
-        public BinaryTreeNodeNavigator<TDimension[]> NodeNavigator => new BinaryTreeNodeNavigator<TDimension[]>(this.InternalPointArray);
+        public BinaryTreeNavigator<TDimension[], TNode> Navigator => new BinaryTreeNavigator<TDimension[], TNode>(this.InternalPointArray, this.InternalNodeArray);
 
         /// <summary>
         /// The maximum value along any dimension.

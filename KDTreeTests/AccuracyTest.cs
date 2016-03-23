@@ -32,24 +32,27 @@
 
             var points = new double[][]
                              {
-                                 new double[] { 7, 2 },
-                                 new double[] { 5, 4 },
-                                 new double[] { 2, 3 },
-                                 new double[] { 4, 7 },
-                                 new double[] { 9, 6 },
-                                 new double[] { 8, 1 }
+                                 new double[] { 7, 2 }, new double[] { 5, 4 }, new double[] { 2, 3 },
+                                 new double[] { 4, 7 }, new double[] { 9, 6 }, new double[] { 8, 1 }
                              };
 
+            var nodes = new string[] { "Eric", "Is", "A", "Really", "Stubborn", "Ferret" };
+            var tree = new KDTree<double, string>(
+                2,
+                points,
+                nodes,
+                Utilities.L2Norm_Squared_Double,
+                double.MinValue,
+                double.MaxValue);
 
-            var tree = new KDTree<double>(2, points, Utilities.L2Norm_Squared_Double, double.MinValue, double.MaxValue);
-
-            Assert.That(tree.InternalArray[0], Is.EqualTo(points[0]));
-            Assert.That(tree.InternalArray[LeftChildIndex(0)], Is.EqualTo(points[1]));
-            Assert.That(tree.InternalArray[LeftChildIndex(LeftChildIndex(0))], Is.EqualTo(points[2]));
-            Assert.That(tree.InternalArray[RightChildIndex(LeftChildIndex(0))], Is.EqualTo(points[3]));
-            Assert.That(tree.InternalArray[RightChildIndex(0)], Is.EqualTo(points[4]));
-            Assert.That(tree.InternalArray[LeftChildIndex(RightChildIndex(0))], Is.EqualTo(points[5]));
+            Assert.That(tree.InternalPointArray[0], Is.EqualTo(points[0]));
+            Assert.That(tree.InternalPointArray[LeftChildIndex(0)], Is.EqualTo(points[1]));
+            Assert.That(tree.InternalPointArray[LeftChildIndex(LeftChildIndex(0))], Is.EqualTo(points[2]));
+            Assert.That(tree.InternalPointArray[RightChildIndex(LeftChildIndex(0))], Is.EqualTo(points[3]));
+            Assert.That(tree.InternalPointArray[RightChildIndex(0)], Is.EqualTo(points[4]));
+            Assert.That(tree.InternalPointArray[LeftChildIndex(RightChildIndex(0))], Is.EqualTo(points[5]));
         }
+
 
 
         /// <summary>
@@ -71,27 +74,36 @@
 
             var points = new double[][]
                              {
-                                 new double[] { 7, 2 },
-                                 new double[] { 5, 4 },
-                                 new double[] { 2, 3 },
-                                 new double[] { 4, 7 },
-                                 new double[] { 9, 6 },
-                                 new double[] { 8, 1 }
+                                 new double[] { 7, 2 }, new double[] { 5, 4 }, new double[] { 2, 3 },
+                                 new double[] { 4, 7 }, new double[] { 9, 6 }, new double[] { 8, 1 }
                              };
 
+            var nodes = new string[] { "Eric", "Is", "A", "Really", "Stubborn", "Ferret" };
 
-            var tree = new KDTree<double>(2, points, Utilities.L2Norm_Squared_Double);
-            var nav = tree.NodeNavigator;
+            var tree = new KDTree<double, string>(2, points, nodes, Utilities.L2Norm_Squared_Double);
 
-            Assert.That(nav.Value, Is.EqualTo(points[0]));
-            Assert.That(nav.Left.Value, Is.EqualTo(points[1]));
-            Assert.That(nav.Left.Left.Value, Is.EqualTo(points[2]));
-            Assert.That(nav.Left.Right.Value, Is.EqualTo(points[3]));
-            Assert.That(nav.Right.Value, Is.EqualTo(points[4]));
-            Assert.That(nav.Right.Left.Value, Is.EqualTo(points[5]));
+            var nav = tree.Navigator;
+
+            Assert.That(nav.Point, Is.EqualTo(points[0]));
+            Assert.That(nav.Left.Point, Is.EqualTo(points[1]));
+            Assert.That(nav.Left.Left.Point, Is.EqualTo(points[2]));
+            Assert.That(nav.Left.Right.Point, Is.EqualTo(points[3]));
+            Assert.That(nav.Right.Point, Is.EqualTo(points[4]));
+            Assert.That(nav.Right.Left.Point, Is.EqualTo(points[5]));
+
+
+
+            Assert.That(nav.Node, Is.EqualTo(nodes[0]));
+            Assert.That(nav.Left.Node, Is.EqualTo(nodes[1]));
+            Assert.That(nav.Left.Left.Node, Is.EqualTo(nodes[2]));
+            Assert.That(nav.Left.Right.Node, Is.EqualTo(nodes[3]));
+            Assert.That(nav.Right.Node, Is.EqualTo(nodes[4]));
+            Assert.That(nav.Right.Left.Node, Is.EqualTo(nodes[5]));
         }
+    }
+}
 
-
+/*
         [Test]
         public void FindNearestNeighborTest()
         {
@@ -135,8 +147,5 @@
 
                 Assert.That(treeRadial.SequenceEqual(linearRadial), Is.EqualTo(true));
             }
-        }
-    }
-}
-
+        }*/
 

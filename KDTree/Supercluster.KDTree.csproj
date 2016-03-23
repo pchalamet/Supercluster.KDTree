@@ -70,7 +70,7 @@
     <Compile Include="Utilities\BinaryTreeNavigation.cs" />
     <Compile Include="HyperRect.cs" />
     <Compile Include="KDTree.cs" />
-    <Compile Include="Utilities\BinaryTreeNodeNavigator.cs" />
+    <Compile Include="Utilities\BinaryTreeNavigator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

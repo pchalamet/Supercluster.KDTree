@@ -13,7 +13,7 @@ namespace Supercluster.KDTree.Utilities
     public static class BoundedPriorityListExtensions
     {
         /// <summary>
-        /// Takes a <see cref="BoundedPriorityList{TElement,TPriority}"/> storing the indicies of the points and nodes of a KDTree
+        /// Takes a <see cref="BoundedPriorityList{TElement,TPriority}"/> storing the indexes of the points and nodes of a KDTree
         /// and returns the points and nodes.
         /// </summary>
         /// <param name="list">The <see cref="BoundedPriorityList{TElement,TPriority}"/>.</param>

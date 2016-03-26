@@ -11,10 +11,10 @@ namespace Supercluster.KDTree
 
     /// <summary>
     /// A list of limited length that remains sorted by <typeparamref name="TPriority"/>.
-    /// Useful for keeping track of items in nearest neighbor searches. Insert is O(log n). Retreval is O(1)
+    /// Useful for keeping track of items in nearest neighbor searches. Insert is O(log n). Retrieval is O(1)
     /// </summary>
     /// <typeparam name="TElement">The type of element the list maintains.</typeparam>
-    /// <typeparam name="TPriority">The type tht the elements are prioritized by.</typeparam>
+    /// <typeparam name="TPriority">The type the elements are prioritized by.</typeparam>
     public class BoundedPriorityList<TElement, TPriority> : IEnumerable<TElement>
         where TPriority : IComparable<TPriority>
     {
@@ -77,7 +77,7 @@ namespace Supercluster.KDTree
         /// Note: You should not have <paramref name="allocate"/> set to true, and the capacity set to a very large number.
         /// Especially if you will be creating and destroying many <see cref="BoundedPriorityList{TElement,TPriority}"/> very rapidly.
         /// If you ignore this advice you will create lots of memory pressure. If you don't understand why this is a problem you should
-        /// understand the garbadge collector. Please read: https://msdn.microsoft.com/en-us/library/ee787088.aspx
+        /// understand the garbage collector. Please read: https://msdn.microsoft.com/en-us/library/ee787088.aspx
         /// </summary>
         /// <param name="capacity">The maximum capacity of the list.</param>
         /// <param name="allocate">If true, initializes the internal lists for the <see cref="BoundedPriorityList{TElement,TPriority}"/> with an initial capacity of <paramref name="capacity"/>.</param>
@@ -99,8 +99,8 @@ namespace Supercluster.KDTree
         /// <summary>
         /// Attempts to add the provided  <paramref name="item"/>. If the list
         /// is currently at maximum capacity and the elements priority is greater
-        /// than or equal to the hiest priority, the <paramref name = "item"/> is not inserted. If the
-        /// <paramref name = "item"/> is eligable for insertion, the upon insertion the <paramref name = "item"/> that previously
+        /// than or equal to the highest priority, the <paramref name = "item"/> is not inserted. If the
+        /// <paramref name = "item"/> is eligible for insertion, the upon insertion the <paramref name = "item"/> that previously
         /// had the largest priority is removed from the list.
         /// This is an O(log n) operation.
         /// </summary>

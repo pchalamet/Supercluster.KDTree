@@ -63,7 +63,7 @@ namespace Supercluster.KDTree
         }
 
         /// <summary>
-        /// Get a hyper rantangle which spanes the entire implicit metric space.
+        /// Get a hyper rectangle which spans the entire implicit metric space.
         /// </summary>
         /// <param name="dimensions">The number of dimensions in the hyper-rectangle's metric space.</param>
         /// <param name="positiveInfinity">The smallest possible values in any given dimension.</param>
@@ -86,7 +86,7 @@ namespace Supercluster.KDTree
         }
 
         /// <summary>
-        /// Gets the point on the rectangle that is closested to the given point.
+        /// Gets the point on the rectangle that is closest to the given point.
         /// If the point is within the rectangle, then the input point is the same as the
         /// output point.f the point is outside the rectangle then the point on the rectangle
         /// that is closest to the given point is returned.

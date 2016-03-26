@@ -18,11 +18,14 @@ namespace Supercluster.KDTree
     /// with the points is an array of type <typeparamref name="TNode"/>.
     /// </summary>
     /// <remarks>
-    /// KDTrees can be fairly difficut to understand at first. The following references helped me
-    /// understand what exactly a KDTree is doing and the contain the best descriptions of both
-    /// bottom-up and top-down searchesof a BinaryTree.
-    /// https://en.wikipedia.org/wiki/K-d_tree
-    /// http://www.amazon.com/Foundations-Multidimensional-Structures-Kaufmann-Computer/dp/0123694469
+    /// KDTrees can be fairly difficult to understand at first. The following references helped me
+    /// understand what exactly a KDTree is doing and the contain the best descriptions of searches in a KDTree.
+    /// Samet's book is the best reference of multidimensional data structures I have ever seen. Wikipedia is also a good starting place.
+    /// References:
+    /// <ul style="list-style-type:none">
+    /// <li> <a href="http://store.elsevier.com/product.jsp?isbn=9780123694461">Foundations of Multidimensional and Metric Data Structures, 1st Edition, by Hanan Samet. ISBN: 9780123694461</a> </li>
+    /// <li> <a href="https://en.wikipedia.org/wiki/K-d_tree"> https://en.wikipedia.org/wiki/K-d_tree </a> </li>
+    /// </ul>
     /// </remarks>
     /// <typeparam name="TDimension">The type of the dimension.</typeparam>
     /// <typeparam name="TNode">The type representing the actual node objects.</typeparam>
@@ -126,7 +129,7 @@ namespace Supercluster.KDTree
         /// Finds the nearest neighbors in the <see cref="KDTree{TDimension,TNode}"/> of the given <paramref name="point"/>.
         /// </summary>
         /// <param name="point">The point whose neighbors we search for.</param>
-        /// <param name="neighbors">The number of neighboors to look for.</param>
+        /// <param name="neighbors">The number of neighbors to look for.</param>
         /// <returns>The</returns>
         public Tuple<TDimension[], TNode>[] NearestNeighbors(TDimension[] point, int neighbors)
         {
@@ -138,7 +141,7 @@ namespace Supercluster.KDTree
         }
 
         /// <summary>
-        /// Searches for the closest points in a hyper-sphere around the g`iven center.
+        /// Searches for the closest points in a hyper-sphere around the given center.
         /// </summary>
         /// <param name="center">The center of the hyper-sphere</param>
         /// <param name="radius">The radius of the hyper-sphere</param>
@@ -148,7 +151,7 @@ namespace Supercluster.KDTree
         {
             // TODO: Remove this comment
             // The call TrimExcess, especially for large mostly sparse lists, is expensive.
-            // To avoid calling this code when given a valid number of neighboors, we simply
+            // To avoid calling this code when given a valid number of neighbors, we simply
             // use an if-then block and repeat the code. It is not the most elegant solution,
             // but it is simple.
             if (neighboors == -1)
@@ -289,7 +292,7 @@ namespace Supercluster.KDTree
             // Work out the current dimension
             var dim = dimension % this.Dimensions;
 
-            // Split our hyper-rect into 2 sub rects along the current
+            // Split our hyper-rectangle into 2 sub rectangles along the current
             // node's point on the current dimension
             var leftRect = rect.Clone();
             leftRect.MaxPoint[dim] = this.InternalPointArray[nodeIndex][dim];
@@ -316,7 +319,7 @@ namespace Supercluster.KDTree
                 maxSearchRadiusSquared);
 
             // Walk down into the further branch but only if our capacity hasn't been reached
-            // OR if there's a region in the further rect that's closer to the target than our
+            // OR if there's a region in the further rectangle that's closer to the target than our
             // current furtherest nearest neighbor
             var closestPointInFurtherRect = furtherRect.GetClosestPoint(target);
             var distanceSquaredToTarget = this.Metric(closestPointInFurtherRect, target);

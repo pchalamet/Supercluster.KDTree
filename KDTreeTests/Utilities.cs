@@ -36,6 +36,24 @@ namespace KDTreeTests
 
         #region Data Generation
 
+        public static double[][] GenerateDoubles(int points, double range, int dimensions)
+        {
+            var data = new List<double[]>();
+            var random = new Random();
+
+            for (var i = 0; i < points; i++)
+            {
+                var array = new double[dimensions];
+                for (var j = 0; j < dimensions; j++)
+                {
+                    array[j] = random.NextDouble() * range;
+                }
+                data.Add(array);
+            }
+
+            return data.ToArray();
+        }
+
         public static double[][] GenerateDoubles(int points, double range)
         {
             var data = new List<double[]>();
@@ -67,7 +85,7 @@ namespace KDTreeTests
         #region Searches
 
         /// <summary>
-        /// Performs a linear search on a given points set to find a nodes that is closest to the gven nodes
+        /// Performs a linear search on a given points set to find a nodes that is closest to the given nodes
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="data"></param>

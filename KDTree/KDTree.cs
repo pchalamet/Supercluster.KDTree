@@ -85,8 +85,8 @@ namespace Supercluster.KDTree
         /// <param name="searchWindowMaxValue">The maximum value to be used in node searches. If null, we assume that <typeparamref name="TDimension"/> has a static field named "MaxValue". All numeric structs have this field.</param>
         public KDTree(
             int dimensions,
-            IEnumerable<TDimension[]> points,
-            IEnumerable<TNode> nodes,
+            TDimension[][] points,
+            TNode[] nodes,
             Func<TDimension[], TDimension[], double> metric,
             TDimension searchWindowMinValue = default(TDimension),
             TDimension searchWindowMaxValue = default(TDimension))
@@ -112,17 +112,14 @@ namespace Supercluster.KDTree
                 this.MaxValue = searchWindowMaxValue;
             }
 
-            var pointsArray = points.ToArray();
-
             // Calculate the number of nodes needed to contain the binary tree.
             // This is equivalent to finding the power of 2 greater than the number of points
-            var elementCount = (int)Math.Pow(2, (int)(Math.Log(pointsArray.Length) / Math.Log(2)) + 1);
+            var elementCount = (int)Math.Pow(2, (int)(Math.Log(points.Length) / Math.Log(2)) + 1);
             this.Dimensions = dimensions;
-            this.InternalPointArray = Enumerable.Repeat(default(TDimension[]), elementCount).ToArray();
-            this.InternalNodeArray = Enumerable.Repeat(default(TNode), elementCount).ToArray();
-            this.Metric = metric;
-            this.Count = pointsArray.Length;
-            this.GenerateTree(0, 0, pointsArray, nodes.ToArray());
+            this.InternalPointArray = new TDimension[elementCount][];
+            this.InternalNodeArray = new TNode[elementCount];
+            this.Count = points.Length;
+            this.GenerateTree(0, 0, points, nodes);
         }
 
         /// <summary>

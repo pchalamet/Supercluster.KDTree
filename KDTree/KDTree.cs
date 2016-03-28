@@ -80,7 +80,7 @@ namespace Supercluster.KDTree
         /// <param name="dimensions">The number of dimensions in the data set.</param>
         /// <param name="points">The points to be constructed into a <see cref="KDTree{TDimension,TNode}"/></param>
         /// <param name="nodes">The nodes associated with each point.</param>
-        /// <param name="metric">The metric function which implicitly defines the metric space in which the KDTree operates in.</param>
+        /// <param name="metric">The metric function which implicitly defines the metric space in which the KDTree operates in. This should be a Minkowski distance. Or any metric whose distance along a single dimension is the absolute value.</param>
         /// <param name="searchWindowMinValue">The minimum value to be used in node searches. If null, we assume that <typeparamref name="TDimension"/> has a static field named "MinValue". All numeric structs have this field.</param>
         /// <param name="searchWindowMaxValue">The maximum value to be used in node searches. If null, we assume that <typeparamref name="TDimension"/> has a static field named "MaxValue". All numeric structs have this field.</param>
         public KDTree(

@@ -79,6 +79,24 @@ namespace KDTreeTests
 
             return data.ToArray();
         }
+
+        public static float[][] GenerateFloats(int points, double range, int dimensions)
+        {
+            var data = new List<float[]>();
+            var random = new Random();
+
+            for (var i = 0; i < points; i++)
+            {
+                var array = new float[dimensions];
+                for (var j = 0; j < dimensions; j++)
+                {
+                    array[j] = (float)(random.NextDouble() * range);
+                }
+                data.Add(array);
+            }
+
+            return data.ToArray();
+        }
         #endregion
 
 

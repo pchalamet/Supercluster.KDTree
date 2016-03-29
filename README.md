@@ -18,7 +18,7 @@ independent T-test for mean comparisons, equal variance assumed).
     * The nearest-neighbor list is a custom data structure (called a BoundedPriorityList) that remains sorted and has O(log n) insert, but it is often much faster than O(log n) as an item is ignored if it is larger than the lists current max-element.
     * Utilizes .NET's new [aggressive inlining](https://msdn.microsoft.com/en-us/library/system.runtime.compilerservices.methodimploptions.aspx) optimization *where appropriate*.
     * The KD-Tree is implemented as an array. Index arithmetic is used to traverse nodes. This is faster (only slightly, but a statistically significant difference)
-than traversing node objects.
+than traversing node objects. This also leads to less memory usage.
     * The tree is built in the standard-way using an exact median finding algorithm. 
 This is slower than the [quickselect](https://en.wikipedia.org/wiki/Quickselect) or [median-of-medians](https://en.wikipedia.org/wiki/Median_of_medians) algorithm but is more 
 likely to create a balanced tree. This allows for search time to be as close to O(log n) as possible.

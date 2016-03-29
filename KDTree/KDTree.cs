@@ -24,7 +24,7 @@ namespace Supercluster.KDTree
     /// References:
     /// <ul style="list-style-type:none">
     /// <li> <a href="http://store.elsevier.com/product.jsp?isbn=9780123694461">Foundations of Multidimensional and Metric Data Structures, 1st Edition, by Hanan Samet. ISBN: 9780123694461</a> </li>
-    /// <li> <a href="https://en.wikipedia.org/wiki/K-d_tree"> https://en.wikipedia.org/wiki/K-d_tree </a> </li>
+    /// <li> <a href="https://en.wikipedia.org/wiki/K-d_tree"> https://en.wikipedia.org/wiki/K-d_tree</a> </li>
     /// </ul>
     /// </remarks>
     /// <typeparam name="TDimension">The type of the dimension.</typeparam>
@@ -80,7 +80,7 @@ namespace Supercluster.KDTree
         /// <param name="dimensions">The number of dimensions in the data set.</param>
         /// <param name="points">The points to be constructed into a <see cref="KDTree{TDimension,TNode}"/></param>
         /// <param name="nodes">The nodes associated with each point.</param>
-        /// <param name="metric">The metric function which implicitly defines the metric space in which the KDTree operates in. This should be a Minkowski distance. Or any metric whose distance along a single dimension is the absolute value.</param>
+        /// <param name="metric">The metric function which implicitly defines the metric space in which the KDTree operates in. This should satisfy the triangle inequality.</param>
         /// <param name="searchWindowMinValue">The minimum value to be used in node searches. If null, we assume that <typeparamref name="TDimension"/> has a static field named "MinValue". All numeric structs have this field.</param>
         /// <param name="searchWindowMaxValue">The maximum value to be used in node searches. If null, we assume that <typeparamref name="TDimension"/> has a static field named "MaxValue". All numeric structs have this field.</param>
         public KDTree(
@@ -147,14 +147,9 @@ namespace Supercluster.KDTree
         /// <returns>The specified number of closest points in the hyper-sphere</returns>
         public Tuple<TDimension[], TNode>[] RadialSearch(TDimension[] center, double radius, int neighboors = -1)
         {
-            // TODO: Remove this comment
-            // The call TrimExcess, especially for large mostly sparse lists, is expensive.
-            // To avoid calling this code when given a valid number of neighbors, we simply
-            // use an if-then block and repeat the code. It is not the most elegant solution,
-            // but it is simple.
+            var nearestNeighbors = new BoundedPriorityList<int, double>(this.Count);
             if (neighboors == -1)
             {
-                var nearestNeighbors = new BoundedPriorityList<int, double>(this.Count);
                 this.SearchForNearestNeighbors(
                     0,
                     center,
@@ -162,12 +157,9 @@ namespace Supercluster.KDTree
                     0,
                     nearestNeighbors,
                     radius);
-
-                return nearestNeighbors.ToResultSet(this);
             }
             else
             {
-                var nearestNeighbors = new BoundedPriorityList<int, double>(neighboors);
                 this.SearchForNearestNeighbors(
                     0,
                     center,
@@ -175,9 +167,9 @@ namespace Supercluster.KDTree
                     0,
                     nearestNeighbors,
                     radius);
-
-                return nearestNeighbors.ToResultSet(this);
             }
+
+            return nearestNeighbors.ToResultSet(this);
         }
 
         /// <summary>

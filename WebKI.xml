@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+  <HelpKINode Title="Add method" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2_Add.htm" />
+  <HelpKINode Title="BinaryTreeNavigation class">
+    <HelpKINode Title="BinaryTreeNavigation Class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigation.htm" />
+    <HelpKINode Title="about BinaryTreeNavigation class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigation.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_Utilities_BinaryTreeNavigation.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BinaryTreeNavigation.LeftChildIndex method" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_LeftChildIndex.htm" />
+  <HelpKINode Title="BinaryTreeNavigation.ParentIndex method" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_ParentIndex.htm" />
+  <HelpKINode Title="BinaryTreeNavigation.RightChildIndex method" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_RightChildIndex.htm" />
+  <HelpKINode Title="BinaryTreeNavigator(Of TPoint, TNode) class">
+    <HelpKINode Title="BinaryTreeNavigator(TPoint, TNode) Class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+    <HelpKINode Title="about BinaryTreeNavigator(Of TPoint, TNode) class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BinaryTreeNavigator(Of TPoint, TNode).BinaryTreeNavigator constructor" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2__ctor.htm" />
+  <HelpKINode Title="BinaryTreeNavigator(Of TPoint, TNode).Index property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Index.htm" />
+  <HelpKINode Title="BinaryTreeNavigator(Of TPoint, TNode).Left property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Left.htm" />
+  <HelpKINode Title="BinaryTreeNavigator(Of TPoint, TNode).Node property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Node.htm" />
+  <HelpKINode Title="BinaryTreeNavigator(Of TPoint, TNode).Parent property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Parent.htm" />
+  <HelpKINode Title="BinaryTreeNavigator(Of TPoint, TNode).Point property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Point.htm" />
+  <HelpKINode Title="BinaryTreeNavigator(Of TPoint, TNode).Right property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Right.htm" />
+  <HelpKINode Title="BinaryTreeNavigator&lt;TPoint, TNode&gt; class">
+    <HelpKINode Title="BinaryTreeNavigator(TPoint, TNode) Class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+    <HelpKINode Title="about BinaryTreeNavigator&lt;TPoint, TNode&gt; class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BinaryTreeNavigator&lt;TPoint, TNode&gt;.BinaryTreeNavigator constructor" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2__ctor.htm" />
+  <HelpKINode Title="BinaryTreeNavigator&lt;TPoint, TNode&gt;.Index property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Index.htm" />
+  <HelpKINode Title="BinaryTreeNavigator&lt;TPoint, TNode&gt;.Left property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Left.htm" />
+  <HelpKINode Title="BinaryTreeNavigator&lt;TPoint, TNode&gt;.Node property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Node.htm" />
+  <HelpKINode Title="BinaryTreeNavigator&lt;TPoint, TNode&gt;.Parent property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Parent.htm" />
+  <HelpKINode Title="BinaryTreeNavigator&lt;TPoint, TNode&gt;.Point property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Point.htm" />
+  <HelpKINode Title="BinaryTreeNavigator&lt;TPoint, TNode&gt;.Right property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Right.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority) class">
+    <HelpKINode Title="BoundedPriorityList(TElement, TPriority) Class" Url="html/T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+    <HelpKINode Title="about BoundedPriorityList(Of TElement, TPriority) class" Url="html/T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).Add method" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2_Add.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).BoundedPriorityList constructor" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2__ctor.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).Capacity property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Capacity.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).Count property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Count.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).GetEnumerator method" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2_GetEnumerator.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).IsFull property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_IsFull.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).Item property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Item.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).MaxElement property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MaxElement.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).MaxPriority property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MaxPriority.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).MinElement property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MinElement.htm" />
+  <HelpKINode Title="BoundedPriorityList(Of TElement, TPriority).MinPriority property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MinPriority.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt; class">
+    <HelpKINode Title="BoundedPriorityList(TElement, TPriority) Class" Url="html/T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+    <HelpKINode Title="about BoundedPriorityList&lt;TElement, TPriority&gt; class" Url="html/T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.Add method" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2_Add.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.BoundedPriorityList constructor" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2__ctor.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.Capacity property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Capacity.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.Count property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Count.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.GetEnumerator method" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2_GetEnumerator.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.IsFull property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_IsFull.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.Item property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Item.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.MaxElement property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MaxElement.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.MaxPriority property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MaxPriority.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.MinElement property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MinElement.htm" />
+  <HelpKINode Title="BoundedPriorityList&lt;TElement, TPriority&gt;.MinPriority property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MinPriority.htm" />
+  <HelpKINode Title="BoundedPriorityListExtensions class">
+    <HelpKINode Title="BoundedPriorityListExtensions Class" Url="html/T_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions.htm" />
+    <HelpKINode Title="about BoundedPriorityListExtensions class" Url="html/T_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BoundedPriorityListExtensions.ToResultSet(Of TPriority, TDimension, TNode) method" Url="html/M_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions_ToResultSet__3.htm" />
+  <HelpKINode Title="BoundedPriorityListExtensions.ToResultSet&lt;TPriority, TDimension, TNode&gt; method" Url="html/M_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions_ToResultSet__3.htm" />
+  <HelpKINode Title="Capacity property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Capacity.htm" />
+  <HelpKINode Title="Clone method" Url="html/M_Supercluster_KDTree_HyperRect_1_Clone.htm" />
+  <HelpKINode Title="Count property">
+    <HelpKINode Title="BoundedPriorityList(TElement, TPriority).Count Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Count.htm" />
+    <HelpKINode Title="KDTree(TDimension, TNode).Count Property " Url="html/P_Supercluster_KDTree_KDTree_2_Count.htm" />
+  </HelpKINode>
+  <HelpKINode Title="Dimensions property" Url="html/P_Supercluster_KDTree_KDTree_2_Dimensions.htm" />
+  <HelpKINode Title="GetClosestPoint method" Url="html/M_Supercluster_KDTree_HyperRect_1_GetClosestPoint.htm" />
+  <HelpKINode Title="GetEnumerator method" Url="html/M_Supercluster_KDTree_BoundedPriorityList_2_GetEnumerator.htm" />
+  <HelpKINode Title="HyperRect(Of T) structure">
+    <HelpKINode Title="HyperRect(T) Structure" Url="html/T_Supercluster_KDTree_HyperRect_1.htm" />
+    <HelpKINode Title="about HyperRect(Of T) structure" Url="html/T_Supercluster_KDTree_HyperRect_1.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_HyperRect_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Supercluster_KDTree_HyperRect_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HyperRect(Of T).Clone method" Url="html/M_Supercluster_KDTree_HyperRect_1_Clone.htm" />
+  <HelpKINode Title="HyperRect(Of T).GetClosestPoint method" Url="html/M_Supercluster_KDTree_HyperRect_1_GetClosestPoint.htm" />
+  <HelpKINode Title="HyperRect(Of T).Infinite method" Url="html/M_Supercluster_KDTree_HyperRect_1_Infinite.htm" />
+  <HelpKINode Title="HyperRect(Of T).MaxPoint property" Url="html/P_Supercluster_KDTree_HyperRect_1_MaxPoint.htm" />
+  <HelpKINode Title="HyperRect(Of T).MinPoint property" Url="html/P_Supercluster_KDTree_HyperRect_1_MinPoint.htm" />
+  <HelpKINode Title="HyperRect&lt;T&gt; structure">
+    <HelpKINode Title="HyperRect(T) Structure" Url="html/T_Supercluster_KDTree_HyperRect_1.htm" />
+    <HelpKINode Title="about HyperRect&lt;T&gt; structure" Url="html/T_Supercluster_KDTree_HyperRect_1.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_HyperRect_1.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Supercluster_KDTree_HyperRect_1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HyperRect&lt;T&gt;.Clone method" Url="html/M_Supercluster_KDTree_HyperRect_1_Clone.htm" />
+  <HelpKINode Title="HyperRect&lt;T&gt;.GetClosestPoint method" Url="html/M_Supercluster_KDTree_HyperRect_1_GetClosestPoint.htm" />
+  <HelpKINode Title="HyperRect&lt;T&gt;.Infinite method" Url="html/M_Supercluster_KDTree_HyperRect_1_Infinite.htm" />
+  <HelpKINode Title="HyperRect&lt;T&gt;.MaxPoint property" Url="html/P_Supercluster_KDTree_HyperRect_1_MaxPoint.htm" />
+  <HelpKINode Title="HyperRect&lt;T&gt;.MinPoint property" Url="html/P_Supercluster_KDTree_HyperRect_1_MinPoint.htm" />
+  <HelpKINode Title="Index property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Index.htm" />
+  <HelpKINode Title="Infinite method" Url="html/M_Supercluster_KDTree_HyperRect_1_Infinite.htm" />
+  <HelpKINode Title="InternalNodeArray property" Url="html/P_Supercluster_KDTree_KDTree_2_InternalNodeArray.htm" />
+  <HelpKINode Title="InternalPointArray property" Url="html/P_Supercluster_KDTree_KDTree_2_InternalPointArray.htm" />
+  <HelpKINode Title="IsFull property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_IsFull.htm" />
+  <HelpKINode Title="Item property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Item.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode) class">
+    <HelpKINode Title="KDTree(TDimension, TNode) Class" Url="html/T_Supercluster_KDTree_KDTree_2.htm" />
+    <HelpKINode Title="about KDTree(Of TDimension, TNode) class" Url="html/T_Supercluster_KDTree_KDTree_2.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Supercluster_KDTree_KDTree_2__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_KDTree_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Supercluster_KDTree_KDTree_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="KDTree(Of TDimension, TNode).Count property" Url="html/P_Supercluster_KDTree_KDTree_2_Count.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode).Dimensions property" Url="html/P_Supercluster_KDTree_KDTree_2_Dimensions.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode).InternalNodeArray property" Url="html/P_Supercluster_KDTree_KDTree_2_InternalNodeArray.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode).InternalPointArray property" Url="html/P_Supercluster_KDTree_KDTree_2_InternalPointArray.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode).KDTree constructor" Url="html/M_Supercluster_KDTree_KDTree_2__ctor.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode).Metric property" Url="html/P_Supercluster_KDTree_KDTree_2_Metric.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode).Navigator property" Url="html/P_Supercluster_KDTree_KDTree_2_Navigator.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode).NearestNeighbors method" Url="html/M_Supercluster_KDTree_KDTree_2_NearestNeighbors.htm" />
+  <HelpKINode Title="KDTree(Of TDimension, TNode).RadialSearch method" Url="html/M_Supercluster_KDTree_KDTree_2_RadialSearch.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt; class">
+    <HelpKINode Title="KDTree(TDimension, TNode) Class" Url="html/T_Supercluster_KDTree_KDTree_2.htm" />
+    <HelpKINode Title="about KDTree&lt;TDimension, TNode&gt; class" Url="html/T_Supercluster_KDTree_KDTree_2.htm" />
+    <HelpKINode Title="constructor" Url="html/M_Supercluster_KDTree_KDTree_2__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_Supercluster_KDTree_KDTree_2.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_Supercluster_KDTree_KDTree_2.htm" />
+  </HelpKINode>
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.Count property" Url="html/P_Supercluster_KDTree_KDTree_2_Count.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.Dimensions property" Url="html/P_Supercluster_KDTree_KDTree_2_Dimensions.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.InternalNodeArray property" Url="html/P_Supercluster_KDTree_KDTree_2_InternalNodeArray.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.InternalPointArray property" Url="html/P_Supercluster_KDTree_KDTree_2_InternalPointArray.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.KDTree constructor" Url="html/M_Supercluster_KDTree_KDTree_2__ctor.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.Metric property" Url="html/P_Supercluster_KDTree_KDTree_2_Metric.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.Navigator property" Url="html/P_Supercluster_KDTree_KDTree_2_Navigator.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.NearestNeighbors method" Url="html/M_Supercluster_KDTree_KDTree_2_NearestNeighbors.htm" />
+  <HelpKINode Title="KDTree&lt;TDimension, TNode&gt;.RadialSearch method" Url="html/M_Supercluster_KDTree_KDTree_2_RadialSearch.htm" />
+  <HelpKINode Title="Left property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Left.htm" />
+  <HelpKINode Title="LeftChildIndex method" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_LeftChildIndex.htm" />
+  <HelpKINode Title="MaxElement property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MaxElement.htm" />
+  <HelpKINode Title="MaxPoint property" Url="html/P_Supercluster_KDTree_HyperRect_1_MaxPoint.htm" />
+  <HelpKINode Title="MaxPriority property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MaxPriority.htm" />
+  <HelpKINode Title="Metric property" Url="html/P_Supercluster_KDTree_KDTree_2_Metric.htm" />
+  <HelpKINode Title="MinElement property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MinElement.htm" />
+  <HelpKINode Title="MinPoint property" Url="html/P_Supercluster_KDTree_HyperRect_1_MinPoint.htm" />
+  <HelpKINode Title="MinPriority property" Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MinPriority.htm" />
+  <HelpKINode Title="Navigator property" Url="html/P_Supercluster_KDTree_KDTree_2_Navigator.htm" />
+  <HelpKINode Title="NearestNeighbors method" Url="html/M_Supercluster_KDTree_KDTree_2_NearestNeighbors.htm" />
+  <HelpKINode Title="Node property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Node.htm" />
+  <HelpKINode Title="Parent property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Parent.htm" />
+  <HelpKINode Title="ParentIndex method" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_ParentIndex.htm" />
+  <HelpKINode Title="Point property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Point.htm" />
+  <HelpKINode Title="RadialSearch method" Url="html/M_Supercluster_KDTree_KDTree_2_RadialSearch.htm" />
+  <HelpKINode Title="Right property" Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Right.htm" />
+  <HelpKINode Title="RightChildIndex method" Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_RightChildIndex.htm" />
+  <HelpKINode Title="Supercluster.KDTree namespace" Url="html/N_Supercluster_KDTree.htm" />
+  <HelpKINode Title="Supercluster.KDTree.BoundedPriorityList(Of TElement, TPriority) class" Url="html/T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+  <HelpKINode Title="Supercluster.KDTree.BoundedPriorityList&lt;TElement, TPriority&gt; class" Url="html/T_Supercluster_KDTree_BoundedPriorityList_2.htm" />
+  <HelpKINode Title="Supercluster.KDTree.HyperRect(Of T) structure" Url="html/T_Supercluster_KDTree_HyperRect_1.htm" />
+  <HelpKINode Title="Supercluster.KDTree.HyperRect&lt;T&gt; structure" Url="html/T_Supercluster_KDTree_HyperRect_1.htm" />
+  <HelpKINode Title="Supercluster.KDTree.KDTree(Of TDimension, TNode) class" Url="html/T_Supercluster_KDTree_KDTree_2.htm" />
+  <HelpKINode Title="Supercluster.KDTree.KDTree&lt;TDimension, TNode&gt; class" Url="html/T_Supercluster_KDTree_KDTree_2.htm" />
+  <HelpKINode Title="Supercluster.KDTree.Utilities namespace" Url="html/N_Supercluster_KDTree_Utilities.htm" />
+  <HelpKINode Title="Supercluster.KDTree.Utilities.BinaryTreeNavigation class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigation.htm" />
+  <HelpKINode Title="Supercluster.KDTree.Utilities.BinaryTreeNavigator(Of TPoint, TNode) class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+  <HelpKINode Title="Supercluster.KDTree.Utilities.BinaryTreeNavigator&lt;TPoint, TNode&gt; class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+  <HelpKINode Title="Supercluster.KDTree.Utilities.BoundedPriorityListExtensions class" Url="html/T_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions.htm" />
+  <HelpKINode Title="ToResultSet(Of TPriority, TDimension, TNode) method" Url="html/M_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions_ToResultSet__3.htm" />
+  <HelpKINode Title="ToResultSet&lt;TPriority, TDimension, TNode&gt; method" Url="html/M_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions_ToResultSet__3.htm" />
+  <HelpKINode Title="Welcome" Url="html/b7608782-401b-4f19-9f67-42126defee64.htm" />
+</HelpKI>

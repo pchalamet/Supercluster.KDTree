@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Title="Welcome to the Supercluster.KDTree Documentation" Url="html/b7608782-401b-4f19-9f67-42126defee64.htm" />
+  <HelpTOCNode Id="33862c92-1ef9-4f1b-abb3-fe0107dcba1f" Title="Supercluster.KDTree" Url="html/N_Supercluster_KDTree.htm">
+    <HelpTOCNode Id="7f751d1e-0cfa-4780-bbfd-2327c8857555" Title="BoundedPriorityList(TElement, TPriority) Class" Url="html/T_Supercluster_KDTree_BoundedPriorityList_2.htm">
+      <HelpTOCNode Title="BoundedPriorityList(TElement, TPriority) Constructor " Url="html/M_Supercluster_KDTree_BoundedPriorityList_2__ctor.htm" />
+      <HelpTOCNode Id="48ae463c-43be-4c83-bfae-834cc194f64a" Title="BoundedPriorityList(TElement, TPriority) Properties" Url="html/Properties_T_Supercluster_KDTree_BoundedPriorityList_2.htm">
+        <HelpTOCNode Title="Capacity Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Capacity.htm" />
+        <HelpTOCNode Title="Count Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Count.htm" />
+        <HelpTOCNode Title="IsFull Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_IsFull.htm" />
+        <HelpTOCNode Title="Item Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_Item.htm" />
+        <HelpTOCNode Title="MaxElement Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MaxElement.htm" />
+        <HelpTOCNode Title="MaxPriority Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MaxPriority.htm" />
+        <HelpTOCNode Title="MinElement Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MinElement.htm" />
+        <HelpTOCNode Title="MinPriority Property " Url="html/P_Supercluster_KDTree_BoundedPriorityList_2_MinPriority.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="78a778a3-6d1d-401d-90d6-581ea8ca2a08" Title="BoundedPriorityList(TElement, TPriority) Methods" Url="html/Methods_T_Supercluster_KDTree_BoundedPriorityList_2.htm">
+        <HelpTOCNode Title="Add Method " Url="html/M_Supercluster_KDTree_BoundedPriorityList_2_Add.htm" />
+        <HelpTOCNode Title="GetEnumerator Method " Url="html/M_Supercluster_KDTree_BoundedPriorityList_2_GetEnumerator.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="17035144-f36e-4ffd-9a6e-dfe0c7a471f3" Title="HyperRect(T) Structure" Url="html/T_Supercluster_KDTree_HyperRect_1.htm">
+      <HelpTOCNode Id="53530210-6a26-466b-a041-0d111bed73ac" Title="HyperRect(T) Properties" Url="html/Properties_T_Supercluster_KDTree_HyperRect_1.htm">
+        <HelpTOCNode Title="MaxPoint Property " Url="html/P_Supercluster_KDTree_HyperRect_1_MaxPoint.htm" />
+        <HelpTOCNode Title="MinPoint Property " Url="html/P_Supercluster_KDTree_HyperRect_1_MinPoint.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="a4628e5b-7088-447a-834e-ec3b603122c0" Title="HyperRect(T) Methods" Url="html/Methods_T_Supercluster_KDTree_HyperRect_1.htm">
+        <HelpTOCNode Title="Clone Method " Url="html/M_Supercluster_KDTree_HyperRect_1_Clone.htm" />
+        <HelpTOCNode Title="GetClosestPoint Method " Url="html/M_Supercluster_KDTree_HyperRect_1_GetClosestPoint.htm" />
+        <HelpTOCNode Title="Infinite Method " Url="html/M_Supercluster_KDTree_HyperRect_1_Infinite.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="26a3e5d7-2b44-4b83-b7a7-140e1b5780b2" Title="KDTree(TDimension, TNode) Class" Url="html/T_Supercluster_KDTree_KDTree_2.htm">
+      <HelpTOCNode Title="KDTree(TDimension, TNode) Constructor " Url="html/M_Supercluster_KDTree_KDTree_2__ctor.htm" />
+      <HelpTOCNode Id="7f70683c-ab38-4f81-921c-b7f2859d6a66" Title="KDTree(TDimension, TNode) Properties" Url="html/Properties_T_Supercluster_KDTree_KDTree_2.htm">
+        <HelpTOCNode Title="Count Property " Url="html/P_Supercluster_KDTree_KDTree_2_Count.htm" />
+        <HelpTOCNode Title="Dimensions Property " Url="html/P_Supercluster_KDTree_KDTree_2_Dimensions.htm" />
+        <HelpTOCNode Title="InternalNodeArray Property " Url="html/P_Supercluster_KDTree_KDTree_2_InternalNodeArray.htm" />
+        <HelpTOCNode Title="InternalPointArray Property " Url="html/P_Supercluster_KDTree_KDTree_2_InternalPointArray.htm" />
+        <HelpTOCNode Title="Metric Property " Url="html/P_Supercluster_KDTree_KDTree_2_Metric.htm" />
+        <HelpTOCNode Title="Navigator Property " Url="html/P_Supercluster_KDTree_KDTree_2_Navigator.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="dfe25136-1770-49c4-8b18-90db138b30ba" Title="KDTree(TDimension, TNode) Methods" Url="html/Methods_T_Supercluster_KDTree_KDTree_2.htm">
+        <HelpTOCNode Title="NearestNeighbors Method " Url="html/M_Supercluster_KDTree_KDTree_2_NearestNeighbors.htm" />
+        <HelpTOCNode Title="RadialSearch Method " Url="html/M_Supercluster_KDTree_KDTree_2_RadialSearch.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="81507598-72a0-4942-9496-4f12fd8f4d06" Title="Supercluster.KDTree.Utilities" Url="html/N_Supercluster_KDTree_Utilities.htm">
+    <HelpTOCNode Id="b34e1057-5e05-4216-871f-f2def7cdf749" Title="BinaryTreeNavigation Class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigation.htm">
+      <HelpTOCNode Id="75e71467-4dfa-40bb-9a5f-e8f67f25a3ec" Title="BinaryTreeNavigation Methods" Url="html/Methods_T_Supercluster_KDTree_Utilities_BinaryTreeNavigation.htm">
+        <HelpTOCNode Title="LeftChildIndex Method " Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_LeftChildIndex.htm" />
+        <HelpTOCNode Title="ParentIndex Method " Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_ParentIndex.htm" />
+        <HelpTOCNode Title="RightChildIndex Method " Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigation_RightChildIndex.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c503e6a9-b844-4060-ac36-70c4acb6fcf6" Title="BinaryTreeNavigator(TPoint, TNode) Class" Url="html/T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm">
+      <HelpTOCNode Title="BinaryTreeNavigator(TPoint, TNode) Constructor " Url="html/M_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2__ctor.htm" />
+      <HelpTOCNode Id="cf46e32b-977e-4442-9b07-24b55cab7241" Title="BinaryTreeNavigator(TPoint, TNode) Properties" Url="html/Properties_T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm">
+        <HelpTOCNode Title="Index Property " Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Index.htm" />
+        <HelpTOCNode Title="Left Property " Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Left.htm" />
+        <HelpTOCNode Title="Node Property " Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Node.htm" />
+        <HelpTOCNode Title="Parent Property " Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Parent.htm" />
+        <HelpTOCNode Title="Point Property " Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Point.htm" />
+        <HelpTOCNode Title="Right Property " Url="html/P_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2_Right.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="BinaryTreeNavigator(TPoint, TNode) Methods" Url="html/Methods_T_Supercluster_KDTree_Utilities_BinaryTreeNavigator_2.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="004705ef-a0e7-4f5d-9306-27bb2ea826c7" Title="BoundedPriorityListExtensions Class" Url="html/T_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions.htm">
+      <HelpTOCNode Id="3b488f9d-36e8-417d-8c9f-e0a16397af97" Title="BoundedPriorityListExtensions Methods" Url="html/Methods_T_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions.htm">
+        <HelpTOCNode Title="ToResultSet(TPriority, TDimension, TNode) Method " Url="html/M_Supercluster_KDTree_Utilities_BoundedPriorityListExtensions_ToResultSet__3.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

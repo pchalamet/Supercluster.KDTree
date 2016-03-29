@@ -9,8 +9,7 @@ This is a KD-Tree that is optimized for machine learning applications, **however
  are often built, re-built, and built again. Also, in machine learning, algorithms need to be **fast** 
 for look ups but it is more acceptable to be slow for construction.
 Thus the tree bas been designed with this philosophy in mind. General characteristics are:
-* **The a nuget package is available.** just run `Install-Package Supercluster.KDTree` to install it.
-* **The code is unit tested and well documented.** Style-cop, unit-test, wiki tutorials and MSDN style docs. It's all here.
+
 * **The tree is extremely fast for search.** 
     * For a 10,000 3-nearest-neighbor searches on a 1,000,000 node 2-Dimensional tree using floats is about 7.5 times than the KD-Tree 
 by [CodeandCats](https://github.com/codeandcats) (number based off of a 1,000,000 sample
@@ -29,6 +28,7 @@ complicated than AVL or Red-Black trees. There do exist adaptive KD-Trees which 
 * **There is no node object used in the KDTree class.** but there is a **NodeNavigator** class which allows you to traverse the tree (or any array) using familiar, left, right, parent properties of a node. 
 * The tree is generic. Only [`IComparable<T>`](https://msdn.microsoft.com/en-us/library/4d7sx9hd.aspx) is required.
 * The tree requires a metric (a distance measure function) `Func`. KD-Trees are spatial data-structures and one only needs a metric function to implicitly define the [metric space](https://en.wikipedia.org/wiki/Metric_space) in which the KD-Tree lives.
+* **The code is unit tested and well documented.** Style-cop, unit-test, wiki tutorials and MSDN style docs. It's all here.
 
 **Documentation and Tutorial**:
 *  MSDN Style Documentation: http://mathferret1013.github.io/Supercluster.KDTree
